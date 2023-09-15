@@ -8,16 +8,18 @@
 import SwiftUI
 import MapKit
 
-struct Site: Identifiable {
-    let id = UUID()
-    let name: String
-    let coordinate: CLLocationCoordinate2D
+struct Place: Identifiable {
+  let id = UUID()
+  var name: String
+  var coordinate: CLLocationCoordinate2D
+    var address: String
 }
 
 struct MapView: View {
     
     let annotations = [
-    Site(name: "Zero Waste Daniel", coordinate: CLLocationCoordinate2D(latitude: 40.704260, longitude: -73.933610))
+    Place(name: "Zero Waste Daniel", coordinate: CLLocationCoordinate2D(latitude: 40.704260, longitude: -73.933610), address: "65 Asheworth"),
+    Place(name: "Planted", coordinate: CLLocationCoordinate2D(latitude: 40.680510, longitude: -73.994430), address: "65 Asheworth")
     ]
     
     @State private var region = MKCoordinateRegion(
@@ -27,9 +29,14 @@ struct MapView: View {
     
     var body: some View {
             VStack {
-                Map(coordinateRegion: $region, annotationItems: annotations) {
-                    MapMarker(coordinate: $0.coordinate)
-                }
+                Map(coordinateRegion: $region,
+                       annotationItems: annotations
+                   ) { place in
+                     MapAnnotation(coordinate: place.coordinate) {
+                         PlaceAnnotationView(title: place.name, address: place.address)
+                     }
+                   }
+
                 }
                     .ignoresSafeArea(.all)
             }

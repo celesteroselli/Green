@@ -12,11 +12,21 @@ struct PointDashboard: View {
         VStack {
             NavigationView {
                 VStack{
-                    Text("Point Dashboard")
+                    Text("What are Green Points?")
                         .font(.title)
+                        .padding(.all)
+                    Image("+3")
+                        .resizable()
+                        .frame(width:400, height:400, alignment: .center)
+                        
+                    Text("Lora ipsum dolar Lora ipsum dolar Lora ipsum dolar Lora ipsum dolar Lora ipsum dolar Lora ipsum dolar Lora ipsum dolar")
+                        .padding()
                     NavigationLink(destination: MapView()) {
-                        Text("Map View")
-                    }
+                        Text("Map of Green Sites")
+                    } .padding()
+                    NavigationLink(destination: MapView()) {
+                        Text("Leaderboard")
+                    } .padding()
                     Spacer()
                 }
             }
