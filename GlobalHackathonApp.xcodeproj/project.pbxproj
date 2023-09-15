@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FB6E7AD2AB4F354000F0D8E /* openPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB6E7AC2AB4F354000F0D8E /* openPageView.swift */; };
 		15EE729E901E1E9CE7235A8F /* Pods_GlobalHackathonApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB6202AADDB4D1CC193794D /* Pods_GlobalHackathonApp.framework */; };
 		2EA3B22908BEAEC2058716EC /* Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE3444CDA841DF7D48703BB /* Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework */; };
 		55EC75943D3C9D82638988AA /* Pods_GlobalHackathonAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A3612C0372F874B2C18BF5 /* Pods_GlobalHackathonAppTests.framework */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FB6E7AC2AB4F354000F0D8E /* openPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = openPageView.swift; sourceTree = "<group>"; };
 		386717E4FF3CF2ADB58A5CA2 /* Pods-GlobalHackathonAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalHackathonAppTests.release.xcconfig"; path = "Target Support Files/Pods-GlobalHackathonAppTests/Pods-GlobalHackathonAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		4AE3444CDA841DF7D48703BB /* Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0378222AB10F02008BCA99 /* GlobalHackathonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalHackathonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,8 @@
 				5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */,
 				5BDA62DB2AB3E49400B2B4CF /* MapView.swift */,
 				5B3C7A932AB4B16100682EB6 /* PlaceAnnotationView.swift */,
+				5BDA62DD2AB3E79B00B2B4CF /* PointDashboard.swift */,
+				0FB6E7AC2AB4F354000F0D8E /* openPageView.swift */,
 				5B0378292AB10F04008BCA99 /* Assets.xcassets */,
 				5B03782B2AB10F04008BCA99 /* Preview Content */,
 				939C0C0F2AB3F1FF00D92508 /* Uber.swift */,
@@ -436,6 +440,7 @@
 				939C0C132AB3F55400D92508 /* AppDelegate.swift in Sources */,
 				5B0378282AB10F02008BCA99 /* ContentView.swift in Sources */,
 				5B0378262AB10F02008BCA99 /* GlobalHackathonAppApp.swift in Sources */,
+				0FB6E7AD2AB4F354000F0D8E /* openPageView.swift in Sources */,
 				5B3C7A942AB4B16100682EB6 /* PlaceAnnotationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
