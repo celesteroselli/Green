@@ -35,17 +35,34 @@ struct OnboardingView: View {
             Image(systemName: "leaf.circle.fill")
                 .foregroundColor(.green)
                 .imageScale(.large)
+            Text ("Swipe to start \(Image(systemName: "arrow.right"))")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            Image(systemName: "leaf.circle.fill")
+                .renderingMode(.template)
+                .resizable(capInsets: EdgeInsets(top: 100.0, leading: 100.0, bottom: 100.0, trailing: 100.0), resizingMode: .stretch)
+                .foregroundColor(Color.green)
+                .padding(.all)
+                .frame(width: 6.0, height: 7.0)
+                .imageScale(.large)
+          
+           
+        
+
+            
             Text("Welcome to Green!")
+                .font(.title2.bold())
           
             Text("Green is the only app that lets you get rewarded for helping the environment by choosing alternative transportation options!")
-            .background(Color.green)
+                .font(.headline)
+                .padding(.all)
+              
             
-            .background(Color.green)
             Text("Let's Get Started!")
+                .font(.largeTitle)
             
-            .background(Color.green)
-            
-            Button("Set up Uber") {
+        
+            Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
                 uber.doLogin(onCompletion: onUberLoginAttempt)
             }
             .background(Color.black)
