@@ -12,7 +12,7 @@ struct Lime {
     var baseURL: String = "https://web-production.lime.bike/api/rider"
     var phoneNumberRegex: String = "^[0-9]{3}+-[0-9]{4}+-[0-9]{3}+"
     
-    func sendLimeConfCode(phoneInput: String, onCompletion: (Bool) -> Void) {
+    func sendLimeConfCode(phoneInput: String, onCompletion: @escaping (Bool) -> Void) {
         var formattedPhone = phoneInput.replacingOccurrences(of: "-", with: "")
         var url = URL(string: baseURL + "/v1/login?phone=%2B" + formattedPhone)!
         
