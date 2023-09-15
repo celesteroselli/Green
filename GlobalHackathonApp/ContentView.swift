@@ -19,6 +19,10 @@ struct ContentView: View {
         }
         .padding()
     }
+    //funcaddedforcompliance
+    func NavigationLink(destination: ScannerView) {
+       //putsomestuffhere
+    }
 
 }
 

@@ -25,9 +25,7 @@ struct ScannerView: View {
                     if (result.string) == "Success" {
                         print("Points added!")
                         //trigger a modal to pop out saying that points were added
-                        struct popupReward {
-                            static var popupRewardNextLaunch = 1
-                        }
+                 
                     }
                 case .failure(let error):
                     //handles error
