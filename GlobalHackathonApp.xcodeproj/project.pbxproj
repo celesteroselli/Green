@@ -143,11 +143,11 @@
 		5B0378242AB10F02008BCA99 /* GlobalHackathonApp */ = {
 			isa = PBXGroup;
 			children = (
+				0F00C3292AB50BAB0024F3C2 /* Model.xcdatamodeld */,
 				939C0C112AB3F38400D92508 /* Info.plist */,
 				5B0378252AB10F02008BCA99 /* GlobalHackathonAppApp.swift */,
 				5B0378272AB10F02008BCA99 /* ContentView.swift */,
 				0F00C3272AB5050E0024F3C2 /* Onboarding.swift */,
-				0F00C3292AB50BAB0024F3C2 /* Model.xcdatamodeld */,
 				5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */,
 				5BDA62DB2AB3E49400B2B4CF /* MapView.swift */,
 				5B3C7A932AB4B16100682EB6 /* PlaceAnnotationView.swift */,
