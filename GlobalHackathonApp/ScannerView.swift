@@ -8,15 +8,22 @@
 import SwiftUI
 import CodeScanner
 
+
 struct ScannerView: View {
     
+    @State var last_date = Date()
+    
     var body: some View {
+        
         VStack {
+            Text("QR Scanner")
+                .font(.title)
+                .padding()
             CodeScannerView(codeTypes: [.qr], simulatedData: "Success") { response in
                 switch response {
                 case .success(let result):
                     if (result.string) == "Success" {
-                        print("We did it!")
+                        print("Points added!")
                         //trigger a modal to pop out saying that points were added
                     }
                 case .failure(let error):
