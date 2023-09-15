@@ -18,8 +18,11 @@ struct Place: Identifiable {
 struct MapView: View {
     
     let annotations = [
-    Place(name: "Zero Waste Daniel", coordinate: CLLocationCoordinate2D(latitude: 40.704260, longitude: -73.933610), address: "65 Asheworth"),
-    Place(name: "Planted", coordinate: CLLocationCoordinate2D(latitude: 40.680510, longitude: -73.994430), address: "65 Asheworth")
+    Place(name: "Zero Waste Daniel", coordinate: CLLocationCoordinate2D(latitude: 40.704260, longitude: -73.933610), address: "257 Varet St, Brooklyn, NY"),
+    Place(name: "Planted", coordinate: CLLocationCoordinate2D(latitude: 40.680510, longitude: -73.994430), address: "333 Smith St, Brooklyn, NY"),
+    Place(name: "4th Street Co-Op", coordinate: CLLocationCoordinate2D(latitude: 40.726530, longitude: -73.990870), address: "58 East 4th Street, New York, NY"),
+    Place(name: "Magpie", coordinate: CLLocationCoordinate2D(latitude: 40.786190, longitude: -73.976520), address: "488 Amsterdam Ave, New York, NY 10024"),
+    Place(name: "Baggu", coordinate: CLLocationCoordinate2D(latitude: 40.717480, longitude: -73.962790), address: "242 Wythe Avenue #4, Brooklyn, NY 11249")
     ]
     
     @State private var region = MKCoordinateRegion(
