@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-GlobalHackathonApp-GlobalHackathonAppUITests/Pods-GlobalHackathonApp-GlobalHackathonAppUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/UberCore/UberCore.framework
+${BUILT_PRODUCTS_DIR}/UberRides/UberRides.framework

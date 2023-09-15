@@ -1,0 +1,6 @@
+framework module Pods_GlobalHackathonApp_GlobalHackathonAppUITests {
+  umbrella header "Pods-GlobalHackathonApp-GlobalHackathonAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
