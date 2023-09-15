@@ -14,6 +14,10 @@
 		5B0378372AB10F04008BCA99 /* GlobalHackathonAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0378362AB10F04008BCA99 /* GlobalHackathonAppTests.swift */; };
 		5B0378412AB10F04008BCA99 /* GlobalHackathonAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0378402AB10F04008BCA99 /* GlobalHackathonAppUITests.swift */; };
 		5B0378432AB10F04008BCA99 /* GlobalHackathonAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0378422AB10F04008BCA99 /* GlobalHackathonAppUITestsLaunchTests.swift */; };
+		5B7BC4AE2AB3D8DC00979C03 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5B7BC4AD2AB3D8DC00979C03 /* CodeScanner */; };
+		5B7BC4B02AB3D90500979C03 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */; };
+		5BDA62DC2AB3E49400B2B4CF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA62DB2AB3E49400B2B4CF /* MapView.swift */; };
+		5BDA62DE2AB3E79B00B2B4CF /* PointDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA62DD2AB3E79B00B2B4CF /* PointDashboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,9 @@
 		5B03783C2AB10F04008BCA99 /* GlobalHackathonAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlobalHackathonAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0378402AB10F04008BCA99 /* GlobalHackathonAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalHackathonAppUITests.swift; sourceTree = "<group>"; };
 		5B0378422AB10F04008BCA99 /* GlobalHackathonAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalHackathonAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		5BDA62DB2AB3E49400B2B4CF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		5BDA62DD2AB3E79B00B2B4CF /* PointDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDashboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B7BC4AE2AB3D8DC00979C03 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +104,9 @@
 			children = (
 				5B0378252AB10F02008BCA99 /* GlobalHackathonAppApp.swift */,
 				5B0378272AB10F02008BCA99 /* ContentView.swift */,
+				5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */,
+				5BDA62DB2AB3E49400B2B4CF /* MapView.swift */,
+				5BDA62DD2AB3E79B00B2B4CF /* PointDashboard.swift */,
 				5B0378292AB10F04008BCA99 /* Assets.xcassets */,
 				5B03782B2AB10F04008BCA99 /* Preview Content */,
 			);
@@ -143,6 +154,9 @@
 			dependencies = (
 			);
 			name = GlobalHackathonApp;
+			packageProductDependencies = (
+				5B7BC4AD2AB3D8DC00979C03 /* CodeScanner */,
+			);
 			productName = GlobalHackathonApp;
 			productReference = 5B0378222AB10F02008BCA99 /* GlobalHackathonApp.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +229,9 @@
 				Base,
 			);
 			mainGroup = 5B0378192AB10F02008BCA99;
+			packageReferences = (
+				5B7BC4AC2AB3D8DC00979C03 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 5B0378232AB10F02008BCA99 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,6 +274,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B7BC4B02AB3D90500979C03 /* ScannerView.swift in Sources */,
+				5BDA62DC2AB3E49400B2B4CF /* MapView.swift in Sources */,
+				5BDA62DE2AB3E79B00B2B4CF /* PointDashboard.swift in Sources */,
 				5B0378282AB10F02008BCA99 /* ContentView.swift in Sources */,
 				5B0378262AB10F02008BCA99 /* GlobalHackathonAppApp.swift in Sources */,
 			);
@@ -419,6 +439,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GlobalHackathonApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to scan QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -447,6 +468,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GlobalHackathonApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to scan QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -577,6 +599,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5B7BC4AC2AB3D8DC00979C03 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5B7BC4AD2AB3D8DC00979C03 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B7BC4AC2AB3D8DC00979C03 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5B03781A2AB10F02008BCA99 /* Project object */;
 }
