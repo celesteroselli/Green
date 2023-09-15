@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LanchScreen: View {
     var body: some View {
-        Text("Welcome to Green!")
+        Text("Welcome back to Green, \(FirstName)!")
     }
 }
 public var uberUsername = "null"

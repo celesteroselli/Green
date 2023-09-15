@@ -7,10 +7,13 @@
 //
 
 import SwiftUI
-
+let FirstName = ""
 struct ContentView: View {
+    @State var shouldShowOnboarding: Bool = true
     var body: some View {
         VStack {
+          
+            
             Image(systemName: "leaf.circle.fill")
             
                 .imageScale(.large)
@@ -19,6 +22,7 @@ struct ContentView: View {
         }
         .padding()
     }
+    
     //funcaddedforcompliance
     func NavigationLink(destination: ScannerView) {
        //putsomestuffhere
