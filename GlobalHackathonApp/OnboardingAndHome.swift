@@ -14,9 +14,11 @@ struct LanchScreen: View {
 }
 
 struct OnboardingView: View {
-    var uber: Uber
+    var uber: Uber = Uber()
+    var lime: Lime = Lime()
     @State var uberLoginMessage: String = ""
     @State var uberLoginMessageColor: Color = Color.gray
+    @State var limePhoneNumberInputCurrent: String = ""
     
     func onUberLoginAttempt(success: Bool, message: String) {
         if success {
@@ -50,10 +52,27 @@ struct OnboardingView: View {
             
             Text(uberLoginMessage)
                 .background(uberLoginMessageColor)
+            
+            TextField("Lime Phone Number", text: $limePhoneNumberInputCurrent)
+                .keyboardType(.phonePad)
+                .onChange(of: limePhoneNumberInputCurrent) { newText in
+                    if (limePhoneNumberInputCurrent.count == 3) {
+                        limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
+                    } else if (limePhoneNumberInputCurrent.count == 8) {
+                        limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
+                    }
+                }
+                .onSubmit {
+                    lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) { success in
+                        if success {
+                            print("success")
+                        }
+                    }
+                }
         }
     }
 }
 
-#Preview {
-    LanchScreen()
-}
+//#Preview {
+//    LanchScreen()
+//}

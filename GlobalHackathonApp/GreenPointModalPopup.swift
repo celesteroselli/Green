@@ -42,6 +42,6 @@ struct openPageView: View {
     }
 }
 
-#Preview {
-    openPageView()
-}
+//#Preview {
+//    openPageView()
+//}
