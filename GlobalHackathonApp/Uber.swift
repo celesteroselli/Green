@@ -7,6 +7,14 @@
 
 import Foundation
 import UberCore
+import UberRides
+
+struct RecentRide {
+    var pickupLocation: String
+    var destination: String
+    var lengthInMiles: Int
+    var timeFinished: Date
+}
 
 struct Uber {
     func doLogin(onCompletion: @escaping (Bool, String) -> Void) -> Void {
@@ -21,5 +29,11 @@ struct Uber {
                 onCompletion(false, "Error Code: " + (error!.localizedDescription))
             }
         })
+    }
+    
+    func getRecentRides(onFinish: @escaping (TripHistory?, Response) -> Void) -> Void {
+        let ridesClient = try RidesClient();
+        if !ridesClient.hasServerToken{return
+        ridesClient.fetchTripHistory(completion: onFinish)
     }
 }
