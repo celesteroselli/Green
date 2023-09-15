@@ -11,7 +11,7 @@ import MapKit
 struct Site: Identifiable {
     let id = UUID()
     let name: String
-    let coordinate: CLLocationCoordinate2D()
+    let coordinate: CLLocationCoordinate2D
 }
 
 struct MapView: View {
@@ -28,13 +28,12 @@ struct MapView: View {
     var body: some View {
             VStack {
                 Map(coordinateRegion: $region, annotationItems: annotations) {
-                    MapPin(coordinate: $0.coordinate)
+                    MapMarker(coordinate: $0.coordinate)
                 }
                 }
                     .ignoresSafeArea(.all)
             }
         }
-}
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
