@@ -20,6 +20,7 @@ struct ScannerView: View {
                         //trigger a modal to pop out saying that points were added
                     }
                 case .failure(let error):
+                    //handles error
                     print(error.localizedDescription)
                 }
             }

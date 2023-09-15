@@ -8,7 +8,17 @@
 import SwiftUI
 import MapKit
 
+struct Site: Identifiable {
+    let id = UUID()
+    let name: String
+    let coordinate: CLLocationCoordinate2D()
+}
+
 struct MapView: View {
+    
+    let annotations = [
+    Site(name: "Zero Waste Daniel", coordinate: CLLocationCoordinate2D(latitude: 40.704260, longitude: -73.933610))
+    ]
     
     @State private var region = MKCoordinateRegion(
                 center: CLLocationCoordinate2D(latitude: 40.7128, longitude: -74.0060),
@@ -17,7 +27,10 @@ struct MapView: View {
     
     var body: some View {
             VStack {
-                Map(coordinateRegion: $region)
+                Map(coordinateRegion: $region, annotationItems: annotations) {
+                    MapPin(coordinate: $0.coordinate)
+                }
+                }
                     .ignoresSafeArea(.all)
             }
         }
