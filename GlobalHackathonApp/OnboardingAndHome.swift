@@ -12,10 +12,22 @@ struct LanchScreen: View {
         Text("Welcome back to Green, \(FirstName)!")
     }
 }
-public var uberUsername = "null"
-public var uberPassword = "null"
 
 struct OnboardingView: View {
+    var uber: Uber
+    @State var uberLoginMessage: String = ""
+    @State var uberLoginMessageColor: Color = Color.gray
+    
+    func onUberLoginAttempt(success: Bool, message: String) {
+        if success {
+            self.uberLoginMessage = "Success"
+            self.uberLoginMessageColor = Color.green
+        } else {
+            self.uberLoginMessage = "Error: " + message
+            self.uberLoginMessageColor = Color.red
+        }
+    }
+    
     var body: some View {
         TabView {
             Image(systemName: "leaf.circle.fill")
@@ -31,6 +43,13 @@ struct OnboardingView: View {
             
             .background(Color.green)
             
+            Button("Set up Uber") {
+                uber.doLogin(onCompletion: onUberLoginAttempt)
+            }
+            .background(Color.black)
+            
+            Text(uberLoginMessage)
+                .background(uberLoginMessageColor)
         }
     }
 }
