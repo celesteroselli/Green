@@ -34,6 +34,7 @@ struct Uber {
     func getRecentRides(onFinish: @escaping (TripHistory?, Response) -> Void) -> Void {
         let ridesClient = try RidesClient();
         if !ridesClient.hasServerToken{return
-        ridesClient.fetchTripHistory(completion: onFinish)
+            ridesClient.fetchTripHistory(completion: onFinish)
+        }
     }
 }
