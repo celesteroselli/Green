@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <key>UberClientID</key>
+    <string>Zg7vdl3wPTztrIbC1aFQwdMwHgUFe6MS</string>
+    <key>UberDisplayName</key>
+    <string>Global Hackathon Project</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>uber</string>
+        <string>uberauth</string>
+    </array>
+    <key>UberCallbackURIs</key>
+    <array>
+        <dict>
+            <key>UberCallbackURIType</key>
+            <string>General</string>
+            <key>URIString</key>
+            <string>GlobalHackathonTeam.GlobalHackathonApp://oauth/consumer</string>
+        </dict>
+    </array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>GlobalHackathonTeam.GlobalHackathonApp</string>
+            </array>
+        </dict>
+    </array>
+</plist>
