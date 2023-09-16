@@ -16,7 +16,8 @@ struct ScannerView: View {
     func check_time() -> Bool {
         let now: Int = Int(UInt64((Date().timeIntervalSince1970)))
         if now < (date + 300) {
-            return false
+            return true
+            //return to false after debug
         } else {
             return true
         }
