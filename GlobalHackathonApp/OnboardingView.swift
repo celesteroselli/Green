@@ -145,18 +145,16 @@ struct OnboardingView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-            //#Preview {
-            //    LanchScreen()
-            //}
-            
-            
-            //      struct OnboadingView_Previews: PreviewProvider {
-            //          static var previews: some View {
-            //             OnboardingView()
         }
         
+        //#Preview {
+        //    LanchScreen()
+        //}
+        
     }
-    
-    
-    
-
+    //struct OnboadingView_Previews: PreviewProvider {
+        //static var previews: some View {
+        //    OnboardingView()
+       // }
+   // }
+}
