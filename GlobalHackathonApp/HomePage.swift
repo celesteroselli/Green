@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct HomePage: View {
+    @AppStorage("name") public var name: String = "User"
+    @AppStorage("points") public var points: Int = 0
+    
     var body: some View {
         NavigationView() {
             VStack {
-                Text("Welcome back to Green, \(FirstName)!")
+                Text("Welcome back to Green, \(name)!")
                     .padding()
                     .font(.title)
                 Spacer()
-                Text("# of Green Points")
+                Text(String(points))
+                Spacer()
+                NavigationLink(destination: ScannerView(points: $points)) {
+                        Text("Scan QR")
+                    }
                 Spacer()
                 HStack {
-                    NavigationLink(destination: HomePage()) {
+                    NavigationLink(destination: HomePage().navigationBarBackButtonHidden(true)) {
                         Text("Home")
                             .padding()
                             .background(.gray)

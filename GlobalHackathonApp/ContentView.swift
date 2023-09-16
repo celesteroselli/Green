@@ -7,12 +7,18 @@
 //
 
 import SwiftUI
-let FirstName = ""
+
 struct ContentView: View {
-    @State var shouldShowOnboarding: Bool = true
+    
+    @AppStorage("onboarding") var onboarding: Bool = true
+    
     var body: some View {
         
-        HomePage()
+        if onboarding {
+            OnboardingView(onboarding: $onboarding)
+        } else {
+            HomePage()
+        }
         
     }
     

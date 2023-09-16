@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @Binding var onboarding: Bool
     
     var uber: Uber = Uber()
     var lime: Lime = Lime()
@@ -80,6 +81,7 @@ struct OnboardingView: View {
                  */
                 Button("Link Uber to Green") {
                     
+                    onboarding = false
                     uber.doLogin(onCompletion: onUberLoginAttempt)
                     
                 }
@@ -139,9 +141,9 @@ struct OnboardingView: View {
         //}
         
     }
-    struct OnboadingView_Previews: PreviewProvider {
-        static var previews: some View {
-            OnboardingView()
-        }
-    }
+    //struct OnboadingView_Previews: PreviewProvider {
+        //static var previews: some View {
+        //    OnboardingView()
+       // }
+   // }
 }

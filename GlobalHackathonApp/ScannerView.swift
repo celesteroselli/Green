@@ -10,8 +10,7 @@ import CodeScanner
 
 
 struct ScannerView: View {
-    
-    @State var last_date = Date()
+    @Binding var points: Int
     
     var body: some View {
         
@@ -24,6 +23,7 @@ struct ScannerView: View {
                 case .success(let result):
                     if (result.string) == "Success" {
                         print("Points added!")
+                        points += 1
                         //trigger a modal to pop out saying that points were added
                  
                     }
@@ -36,8 +36,9 @@ struct ScannerView: View {
     }
 }
 
-struct ScannerView_Previews: PreviewProvider {
-    static var previews: some View {
-        ScannerView()
-    }
-}
+//struct ScannerView_Previews: PreviewProvider {
+  //  @State var points: Int = 3
+  //  static var previews: some View {
+  //      ScannerView(points: $points)
+  //  }
+//}
