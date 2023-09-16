@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Binding var name: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Form {
+                Section {
+                    TextField(name, text: $name)
+                } header: {
+                    Text("Name")
+                }
+            }
+        }.navigationTitle("Settings")
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
-    }
-}
+//struct SettingsView_Previews: PreviewProvider {
+ //   static var previews: some View {
+  //      SettingsView()
+  //  }
+//}

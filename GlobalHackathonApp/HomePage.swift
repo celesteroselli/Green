@@ -20,12 +20,13 @@ struct HomePage: View {
                     .multilineTextAlignment(.center)
                 Spacer()
                 Text(String(points))
-                    .font(.system(size: 45))
+                    .font(.system(size: 85))
                     .padding(.bottom)
                 Text("Green Points Earned")
+                    .font(.system(size: 26))
                 Spacer()
                 NavigationLink(destination: ScannerView(points: $points)) {
-                        Text("Scan QR")
+                        Text("Scan QR Code")
                         .font(.title)
                         .padding()
                         .overlay(
@@ -35,13 +36,6 @@ struct HomePage: View {
                     }
                 Spacer()
                 HStack {
-                    NavigationLink(destination: HomePage().navigationBarBackButtonHidden(true)) {
-                        Text("Home")
-                            .padding()
-                            .background(Color.accentColor)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
                     NavigationLink(destination: MapView()) {
                         Text("Map")
                             .padding()
@@ -50,14 +44,19 @@ struct HomePage: View {
                             .cornerRadius(8)
                     }
                     NavigationLink(destination: LeaderboardView(points: $points)) {
-                        Text("Achievements")
+                        HStack {
+                            Text("Achievements")
+                        }
                             .padding()
                             .background(Color.accentColor)
                             .foregroundColor(.white)
                             .cornerRadius(8)
                     }
-                    NavigationLink(destination: SettingsView()) {
-                        Image(systemName: "gear")
+                    NavigationLink(destination: SettingsView(name: $name)) {
+                        HStack {
+                            Image(systemName: "gear")
+                            Text("Settings")
+                        }
                             .padding()
                             .background(Color.accentColor)
                             .foregroundColor(.white)
