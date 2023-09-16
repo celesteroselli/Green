@@ -31,18 +31,20 @@ struct MapView: View {
             )
     
     var body: some View {
+        NavigationView {
             VStack {
                 Map(coordinateRegion: $region,
-                       annotationItems: annotations
-                   ) { place in
-                     MapAnnotation(coordinate: place.coordinate) {
-                         PlaceAnnotationView(title: place.name, address: place.address)
-                     }
-                   }
-
+                    annotationItems: annotations
+                ) { place in
+                    MapAnnotation(coordinate: place.coordinate) {
+                        PlaceAnnotationView(title: place.name, address: place.address)
+                    }
                 }
-                    .ignoresSafeArea(.all)
+                
             }
+            .ignoresSafeArea(.all)
+        }.navigationTitle("Green Sites Near Me")
+    }
         }
 
 struct MapView_Previews: PreviewProvider {

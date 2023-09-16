@@ -17,39 +17,53 @@ struct HomePage: View {
                 Text("Welcome back to Green, \(name)!")
                     .padding()
                     .font(.title)
+                    .multilineTextAlignment(.center)
                 Spacer()
                 Text(String(points))
                     .font(.system(size: 45))
+                    .padding(.bottom)
+                Text("Green Points Earned")
                 Spacer()
                 NavigationLink(destination: ScannerView(points: $points)) {
                         Text("Scan QR")
+                        .font(.title)
+                        .padding()
+                        .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.accentColor, lineWidth: 3)
+                                )
                     }
                 Spacer()
                 HStack {
                     NavigationLink(destination: HomePage().navigationBarBackButtonHidden(true)) {
                         Text("Home")
                             .padding()
-                            .background(.gray)
+                            .background(Color.accentColor)
+                            .foregroundColor(.white)
                             .cornerRadius(8)
                     }
                     NavigationLink(destination: MapView()) {
                         Text("Map")
                             .padding()
-                            .background(.gray)
+                            .background(Color.accentColor)
+                            .foregroundColor(.white)
                             .cornerRadius(8)
                     }
                     NavigationLink(destination: LeaderboardView(points: $points)) {
-                        Text("Score")
+                        Text("Achievements")
                             .padding()
-                            .background(.gray)
+                            .background(Color.accentColor)
+                            .foregroundColor(.white)
                             .cornerRadius(8)
                     }
                     NavigationLink(destination: SettingsView()) {
-                        Text("Settings")
+                        Image(systemName: "gear")
                             .padding()
-                            .background(.gray)
+                            .background(Color.accentColor)
+                            .foregroundColor(.white)
                             .cornerRadius(8)
                     }
+                    
                 }
             }
         }

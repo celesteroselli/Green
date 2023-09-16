@@ -33,7 +33,7 @@ struct LeaderboardView: View {
                         }
                         .padding()
                         .frame(width: 350)
-                        .background(points >= achievement.pts ? .green : .gray)
+                        .background(points >= achievement.pts ? Color.accentColor : .gray)
                         .cornerRadius(8)
                         .padding()
                     }
