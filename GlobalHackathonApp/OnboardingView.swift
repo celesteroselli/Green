@@ -37,13 +37,7 @@ struct OnboardingView: View {
                 Text ("Swipe to start \(Image(systemName: "arrow.right"))")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                Image(systemName: "leaf.circle.fill")
-                    .renderingMode(.template)
-                    .resizable(capInsets: EdgeInsets(top: 100.0, leading: 100.0, bottom: 100.0, trailing: 100.0), resizingMode: .stretch)
-                    .foregroundColor(Color.green)
-                    .padding(.all)
-                    .frame(width: 6.0, height: 7.0)
-                    .imageScale(.large)
+                
                 //         Button("linkGreen+Uber") {
                 //nothingyet
                 //             }
