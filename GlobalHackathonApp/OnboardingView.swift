@@ -79,7 +79,7 @@ struct OnboardingView: View {
                  }
                  }
                  */
-                Button("Link Uber to Green") {
+                Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
                     
                     uber.doLogin(onCompletion: onUberLoginAttempt)
                     onboarding = false
@@ -103,7 +103,7 @@ struct OnboardingView: View {
                     text: $limePhoneNumberInputCurrent
                 )
                 .padding()
-                
+                .keyboardType(.numberPad)
                 .frame(width: nil)
                 .onChange(of: limePhoneNumberInputCurrent) { newText in
                     if (limePhoneNumberInputCurrent.count == 3) {
@@ -141,9 +141,10 @@ struct OnboardingView: View {
                     
                     
                     
-                    
+                
                 }
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
         }
