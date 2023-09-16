@@ -14,7 +14,7 @@ struct Lime {
     
     func sendLimeConfCode(phoneInput: String, onCompletion: @escaping (Bool) -> Void) {
         var formattedPhone = phoneInput.replacingOccurrences(of: "-", with: "")
-        var url = URL(string: baseURL + "/v1/login?phone=%2B" + formattedPhone)!
+        var url = URL(string: baseURL + "/v1/login?phone=%2B1" + formattedPhone)!
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let httpResponse = response as? HTTPURLResponse {
