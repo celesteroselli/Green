@@ -23,6 +23,8 @@
 		5B3C7A942AB4B16100682EB6 /* PlaceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C7A932AB4B16100682EB6 /* PlaceAnnotationView.swift */; };
 		5B7BC4AE2AB3D8DC00979C03 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5B7BC4AD2AB3D8DC00979C03 /* CodeScanner */; };
 		5B7BC4B02AB3D90500979C03 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */; };
+		5BADE0F72AB5F61300405342 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BADE0F62AB5F61300405342 /* SettingsView.swift */; };
+		5BADE0F92AB5F61B00405342 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BADE0F82AB5F61B00405342 /* LeaderboardView.swift */; };
 		5BB91FC62AB556D100DE0096 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB91FC52AB556D100DE0096 /* HomePage.swift */; };
 		5BDA62DC2AB3E49400B2B4CF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA62DB2AB3E49400B2B4CF /* MapView.swift */; };
 		935F3A702AB519E700B41CD4 /* Lime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F3A6F2AB519E700B41CD4 /* Lime.swift */; };
@@ -65,6 +67,9 @@
 		5B0378422AB10F04008BCA99 /* GlobalHackathonAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalHackathonAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5B3C7A932AB4B16100682EB6 /* PlaceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotationView.swift; sourceTree = "<group>"; };
 		5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		5BADE0F62AB5F61300405342 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5BADE0F82AB5F61B00405342 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		5BADE0FA2AB6040400405342 /* GlobalHackathonApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GlobalHackathonApp.entitlements; sourceTree = "<group>"; };
 		5BB91FC52AB556D100DE0096 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		5BDA62DB2AB3E49400B2B4CF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		5CAC9EDF1CA4F7F6F6861F4C /* Pods-GlobalHackathonApp-GlobalHackathonAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalHackathonApp-GlobalHackathonAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-GlobalHackathonApp-GlobalHackathonAppUITests/Pods-GlobalHackathonApp-GlobalHackathonAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +152,7 @@
 		5B0378242AB10F02008BCA99 /* GlobalHackathonApp */ = {
 			isa = PBXGroup;
 			children = (
+				5BADE0FA2AB6040400405342 /* GlobalHackathonApp.entitlements */,
 				0F00C3292AB50BAB0024F3C2 /* Model.xcdatamodeld */,
 				939C0C112AB3F38400D92508 /* Info.plist */,
 				5B0378252AB10F02008BCA99 /* GlobalHackathonAppApp.swift */,
@@ -157,6 +163,8 @@
 				5BDA62DB2AB3E49400B2B4CF /* MapView.swift */,
 				5B3C7A932AB4B16100682EB6 /* PlaceAnnotationView.swift */,
 				0FB6E7AC2AB4F354000F0D8E /* GreenPointModalPopup.swift */,
+				5BADE0F62AB5F61300405342 /* SettingsView.swift */,
+				5BADE0F82AB5F61B00405342 /* LeaderboardView.swift */,
 				5B0378292AB10F04008BCA99 /* Assets.xcassets */,
 				5B03782B2AB10F04008BCA99 /* Preview Content */,
 				939C0C0F2AB3F1FF00D92508 /* Uber.swift */,
@@ -455,8 +463,10 @@
 				5BB91FC62AB556D100DE0096 /* HomePage.swift in Sources */,
 				5B0378262AB10F02008BCA99 /* GlobalHackathonAppApp.swift in Sources */,
 				0F00C32B2AB50BAB0024F3C2 /* Model.xcdatamodeld in Sources */,
+				5BADE0F92AB5F61B00405342 /* LeaderboardView.swift in Sources */,
 				0FB6E7AD2AB4F354000F0D8E /* GreenPointModalPopup.swift in Sources */,
 				5B3C7A942AB4B16100682EB6 /* PlaceAnnotationView.swift in Sources */,
+				5BADE0F72AB5F61300405342 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GlobalHackathonApp/GlobalHackathonApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -632,7 +643,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = GlobalHackathonTeam.GlobalHackathonApp.X.code;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GlobalHackathonTeam.GlobalHackathonApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -647,6 +658,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GlobalHackathonApp/GlobalHackathonApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -666,7 +678,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = GlobalHackathonTeam.GlobalHackathonApp.X.code;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GlobalHackathonTeam.GlobalHackathonApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

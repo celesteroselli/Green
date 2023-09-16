@@ -19,6 +19,7 @@ struct HomePage: View {
                     .font(.title)
                 Spacer()
                 Text(String(points))
+                    .font(.system(size: 45))
                 Spacer()
                 NavigationLink(destination: ScannerView(points: $points)) {
                         Text("Scan QR")
@@ -37,13 +38,13 @@ struct HomePage: View {
                             .background(.gray)
                             .cornerRadius(8)
                     }
-                    NavigationLink(destination: MapView()) {
+                    NavigationLink(destination: LeaderboardView(points: $points)) {
                         Text("Score")
                             .padding()
                             .background(.gray)
                             .cornerRadius(8)
                     }
-                    NavigationLink(destination: MapView()) {
+                    NavigationLink(destination: SettingsView()) {
                         Text("Settings")
                             .padding()
                             .background(.gray)
