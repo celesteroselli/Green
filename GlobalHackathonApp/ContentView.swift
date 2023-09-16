@@ -9,19 +9,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @AppStorage("onboarding") var onboarding: Bool = true
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world! This is on GitHub! And Liam can commit to it!")
+        
+        if onboarding {
+            OnboardingView(onboarding: $onboarding)
+        } else {
+            HomePage()
         }
-        .padding()
+        
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }

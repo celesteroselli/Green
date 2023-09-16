@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct GlobalHackathonAppApp: App {
+    @AppStorage("onboarding") var onboarding: Bool = true
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if onboarding == true {
+                OnboardingView(onboarding: $onboarding)
+            } else {
+                ContentView()
+            }
         }
     }
 }
