@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-struct FirstPage: View {
-    var body: some View {
-        Text("Welcome back to Green, \(FirstName)!")
-    }
-}
-
 struct OnboardingView: View {
     
     var uber: Uber = Uber()
@@ -84,7 +78,7 @@ struct OnboardingView: View {
                  }
                  }
                  */
-                Button("Link Uber to Green", systemImage: "person.crop.circle.fill.badge.plus") {
+                Button("Link Uber to Green") {
                     
                     uber.doLogin(onCompletion: onUberLoginAttempt)
                     
@@ -144,5 +138,10 @@ struct OnboardingView: View {
         //    LanchScreen()
         //}
         
+    }
+    struct OnboadingView_Previews: PreviewProvider {
+        static var previews: some View {
+            OnboardingView()
+        }
     }
 }

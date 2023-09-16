@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F00C3282AB5050E0024F3C2 /* OnboardingAndHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00C3272AB5050E0024F3C2 /* OnboardingAndHome.swift */; };
+		0F00C3282AB5050E0024F3C2 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00C3272AB5050E0024F3C2 /* OnboardingView.swift */; };
 		0F00C32B2AB50BAB0024F3C2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F00C3292AB50BAB0024F3C2 /* Model.xcdatamodeld */; };
 		0FB6E7AD2AB4F354000F0D8E /* GreenPointModalPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB6E7AC2AB4F354000F0D8E /* GreenPointModalPopup.swift */; };
 		15EE729E901E1E9CE7235A8F /* Pods_GlobalHackathonApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB6202AADDB4D1CC193794D /* Pods_GlobalHackathonApp.framework */; };
 		2EA3B22908BEAEC2058716EC /* Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE3444CDA841DF7D48703BB /* Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework */; };
 		55EC75943D3C9D82638988AA /* Pods_GlobalHackathonAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A3612C0372F874B2C18BF5 /* Pods_GlobalHackathonAppTests.framework */; };
 		5B0378262AB10F02008BCA99 /* GlobalHackathonAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0378252AB10F02008BCA99 /* GlobalHackathonAppApp.swift */; };
-		5B0378282AB10F02008BCA99 /* startuppage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0378272AB10F02008BCA99 /* startuppage.swift */; };
+		5B0378282AB10F02008BCA99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0378272AB10F02008BCA99 /* ContentView.swift */; };
 		5B03782A2AB10F04008BCA99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B0378292AB10F04008BCA99 /* Assets.xcassets */; };
 		5B03782D2AB10F04008BCA99 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B03782C2AB10F04008BCA99 /* Preview Assets.xcassets */; };
 		5B0378372AB10F04008BCA99 /* GlobalHackathonAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0378362AB10F04008BCA99 /* GlobalHackathonAppTests.swift */; };
@@ -23,6 +23,7 @@
 		5B3C7A942AB4B16100682EB6 /* PlaceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3C7A932AB4B16100682EB6 /* PlaceAnnotationView.swift */; };
 		5B7BC4AE2AB3D8DC00979C03 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5B7BC4AD2AB3D8DC00979C03 /* CodeScanner */; };
 		5B7BC4B02AB3D90500979C03 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */; };
+		5BB91FC62AB556D100DE0096 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB91FC52AB556D100DE0096 /* HomePage.swift */; };
 		5BDA62DC2AB3E49400B2B4CF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA62DB2AB3E49400B2B4CF /* MapView.swift */; };
 		935F3A702AB519E700B41CD4 /* Lime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F3A6F2AB519E700B41CD4 /* Lime.swift */; };
 		939C0C102AB3F1FF00D92508 /* Uber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C0C0F2AB3F1FF00D92508 /* Uber.swift */; };
@@ -47,14 +48,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0F00C3272AB5050E0024F3C2 /* OnboardingAndHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAndHome.swift; sourceTree = "<group>"; };
+		0F00C3272AB5050E0024F3C2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0F00C32A2AB50BAB0024F3C2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0FB6E7AC2AB4F354000F0D8E /* GreenPointModalPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenPointModalPopup.swift; sourceTree = "<group>"; };
 		386717E4FF3CF2ADB58A5CA2 /* Pods-GlobalHackathonAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalHackathonAppTests.release.xcconfig"; path = "Target Support Files/Pods-GlobalHackathonAppTests/Pods-GlobalHackathonAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		4AE3444CDA841DF7D48703BB /* Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0378222AB10F02008BCA99 /* GlobalHackathonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalHackathonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0378252AB10F02008BCA99 /* GlobalHackathonAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalHackathonAppApp.swift; sourceTree = "<group>"; };
-		5B0378272AB10F02008BCA99 /* startuppage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startuppage.swift; sourceTree = "<group>"; };
+		5B0378272AB10F02008BCA99 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5B0378292AB10F04008BCA99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B03782C2AB10F04008BCA99 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B0378322AB10F04008BCA99 /* GlobalHackathonAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlobalHackathonAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +65,7 @@
 		5B0378422AB10F04008BCA99 /* GlobalHackathonAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalHackathonAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5B3C7A932AB4B16100682EB6 /* PlaceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotationView.swift; sourceTree = "<group>"; };
 		5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		5BB91FC52AB556D100DE0096 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		5BDA62DB2AB3E49400B2B4CF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		5CAC9EDF1CA4F7F6F6861F4C /* Pods-GlobalHackathonApp-GlobalHackathonAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalHackathonApp-GlobalHackathonAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-GlobalHackathonApp-GlobalHackathonAppUITests/Pods-GlobalHackathonApp-GlobalHackathonAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E617C96A89572969E4186CB /* Pods-GlobalHackathonApp-GlobalHackathonAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalHackathonApp-GlobalHackathonAppUITests.release.xcconfig"; path = "Target Support Files/Pods-GlobalHackathonApp-GlobalHackathonAppUITests/Pods-GlobalHackathonApp-GlobalHackathonAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,8 +150,9 @@
 				0F00C3292AB50BAB0024F3C2 /* Model.xcdatamodeld */,
 				939C0C112AB3F38400D92508 /* Info.plist */,
 				5B0378252AB10F02008BCA99 /* GlobalHackathonAppApp.swift */,
-				5B0378272AB10F02008BCA99 /* startuppage.swift */,
-				0F00C3272AB5050E0024F3C2 /* OnboardingAndHome.swift */,
+				5B0378272AB10F02008BCA99 /* ContentView.swift */,
+				0F00C3272AB5050E0024F3C2 /* OnboardingView.swift */,
+				5BB91FC52AB556D100DE0096 /* HomePage.swift */,
 				5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */,
 				5BDA62DB2AB3E49400B2B4CF /* MapView.swift */,
 				5B3C7A932AB4B16100682EB6 /* PlaceAnnotationView.swift */,
@@ -444,11 +447,12 @@
 			files = (
 				5B7BC4B02AB3D90500979C03 /* ScannerView.swift in Sources */,
 				939C0C102AB3F1FF00D92508 /* Uber.swift in Sources */,
-				0F00C3282AB5050E0024F3C2 /* OnboardingAndHome.swift in Sources */,
+				0F00C3282AB5050E0024F3C2 /* OnboardingView.swift in Sources */,
 				5BDA62DC2AB3E49400B2B4CF /* MapView.swift in Sources */,
 				939C0C132AB3F55400D92508 /* AppDelegate.swift in Sources */,
 				935F3A702AB519E700B41CD4 /* Lime.swift in Sources */,
-				5B0378282AB10F02008BCA99 /* startuppage.swift in Sources */,
+				5B0378282AB10F02008BCA99 /* ContentView.swift in Sources */,
+				5BB91FC62AB556D100DE0096 /* HomePage.swift in Sources */,
 				5B0378262AB10F02008BCA99 /* GlobalHackathonAppApp.swift in Sources */,
 				0F00C32B2AB50BAB0024F3C2 /* Model.xcdatamodeld in Sources */,
 				0FB6E7AD2AB4F354000F0D8E /* GreenPointModalPopup.swift in Sources */,
