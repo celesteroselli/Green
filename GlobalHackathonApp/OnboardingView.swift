@@ -81,7 +81,7 @@ struct OnboardingView: View {
                 Button("Link Uber to Green") {
                     
                     uber.doLogin(onCompletion: onUberLoginAttempt)
-                    
+                    needsOnboarding = false
                 }
                 .buttonStyle(.borderedProminent)
                 var READMETOO = "This button is throwing off the onboarding because of a bug. (idk why)"
@@ -96,52 +96,67 @@ struct OnboardingView: View {
                 //   uber.doLogin(onCompletion: onUberLoginAttempt)
                 //       }
                 
-                /*
-                 TextField("Lime Phone Number", text: $limePhoneNumberInputCurrent) {
-                 //          .keyboardType(.phonePad)
-                 .onChange(of: limePhoneNumberInputCurrent) { newText in
-                 if (limePhoneNumberInputCurrent.count == 3) {
-                 limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
-                 } else if (limePhoneNumberInputCurrent.count == 8) {
-                 limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
-                 }
-                 }
-                 .onSubmit {
-                 lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) { success in
-                 if success {
-                 print("success")
-                 }
-                 }
+                
+                TextField (
+                    "What's your Lime phone number?",
+                    text: $limePhoneNumberInputCurrent
+                )
+                .padding()
+                
+                .frame(width: nil)
+                .onChange(of: limePhoneNumberInputCurrent) { newText in
+                    if (limePhoneNumberInputCurrent.count == 3) {
+                        limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
+                    } else if (limePhoneNumberInputCurrent.count == 7) {
+                        limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
+                    }
+                    if (limePhoneNumberInputCurrent.count == 10){
+                        lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) {
+                            success in if success {
+                                print("success")
+                            }
+                    }
+                }
+                
+             
+                        
+                        
+                        
+                        
+                        
+                        
+                    }
+                    
+                    
+                    
+                    
+                    //      Text(uberLoginMessage)
+                    //       .background(uberLoginMessageColor)
+                    
+                    
                  
-                 
-                 }
-                 
-                 }
-                 */
-                
-                //      Text(uberLoginMessage)
-                //       .background(uberLoginMessageColor)
-                
-                
-                var README = "CODE BELOW IS NOT INCLUDED IN ONBOARDING DUE TO XCODE LIMITATIONS"
-                
-                
-                
-                
-                
-                
+                    
+                    
+                    
+                    
+                    
+                    
+                }
+                .textFieldStyle(RoundedBorderTextFieldStyle())
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
+            //#Preview {
+            //    LanchScreen()
+            //}
+            
+            
+            //      struct OnboadingView_Previews: PreviewProvider {
+            //          static var previews: some View {
+            //             OnboardingView()
         }
         
-        //#Preview {
-        //    LanchScreen()
-        //}
-        
     }
-    struct OnboadingView_Previews: PreviewProvider {
-        static var previews: some View {
-            OnboardingView()
-        }
-    }
-}
+    
+    
+    
+
