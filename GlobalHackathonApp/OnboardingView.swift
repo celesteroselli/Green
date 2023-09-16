@@ -9,9 +9,10 @@ import SwiftUI
 
 struct OnboardingView: View {
     
+    @Binding var onboarding: Bool
+    
     var uber: Uber = Uber()
     var lime: Lime = Lime()
-    @State public var needsOnboarding: Bool = true
     @State var uberLoginMessage: String = ""
     @State var uberLoginMessageColor: Color = Color.gray
     @State var limePhoneNumberInputCurrent: String = ""
@@ -81,7 +82,7 @@ struct OnboardingView: View {
                 Button("Link Uber to Green") {
                     
                     uber.doLogin(onCompletion: onUberLoginAttempt)
-                    needsOnboarding = false
+                    onboarding = false
                 }
                 .buttonStyle(.borderedProminent)
                 var READMETOO = "This button is throwing off the onboarding because of a bug. (idk why)"
@@ -157,4 +158,3 @@ struct OnboardingView: View {
         //    OnboardingView()
        // }
    // }
-}
