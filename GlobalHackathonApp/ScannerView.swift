@@ -16,8 +16,7 @@ struct ScannerView: View {
     func check_time() -> Bool {
         let now: Int = Int(UInt64((Date().timeIntervalSince1970)))
         if now < (date + 300) {
-            return true
-            //return to false after debug
+            return false
         } else {
             return true
         }
@@ -27,7 +26,7 @@ struct ScannerView: View {
         NavigationView {
             VStack {
                 if check_time() {
-                    CodeScannerView(codeTypes: [.qr], simulatedData: "Success") { response in
+                    CodeScannerView(codeTypes: [.qr], scanMode: .oncePerCode, simulatedData: "Success") { response in
                         switch response {
                         case .success(let result):
                             if (result.string) == "Success" {
@@ -42,8 +41,8 @@ struct ScannerView: View {
                             print(error.localizedDescription)
                         }
                     }
-                } else {
-                    Text("Sorry! To prevent fraud, the scanner is locked out for 5 minutes after scanning a code. Check back in 5 minutes!")
+                } else if check_time() == false {
+                    Text("Code scanned!")
                         .font(.title)
                         .multilineTextAlignment(.center)
                 }
