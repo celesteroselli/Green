@@ -9,7 +9,11 @@ import SwiftUI
 
 struct OnboardingView: View {
     
+    @Binding var name: String
     @Binding var onboarding: Bool
+    @State var username: String = ""
+    @Binding var alert: Bool
+    @Binding var type: String
     
     var uber: Uber = Uber()
     var lime: Lime = Lime()
@@ -76,7 +80,7 @@ struct OnboardingView: View {
                 Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
                     
                     uber.doLogin(onCompletion: onUberLoginAttempt)
-                    onboarding = false
+                    
                 }
                 .buttonStyle(.borderedProminent)
                 var READMETOO = "This button is throwing off the onboarding because of a bug. (idk why)"
@@ -129,7 +133,18 @@ struct OnboardingView: View {
                     //       .background(uberLoginMessageColor)
                     
                     
-                 
+                VStack {
+                        Text ("Enter Username")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        TextField("Enter username", text: $name)
+                    NavigationLink(destination: HomePage(name: $name, alert: $alert, type: $type)) {
+                            Button("Continue to home page") {
+                                print(name)
+                                onboarding = false
+                            }
+                        }
+                }
                     
                     
                     

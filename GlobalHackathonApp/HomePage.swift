@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct HomePage: View {
-    @AppStorage("name") public var name: String = "User"
+    @Binding var name: String
+    @Binding var alert: Bool
     @AppStorage("points") public var points: Int = 0
+    @Binding var type: String
     
     var body: some View {
         NavigationView() {
@@ -64,13 +66,21 @@ struct HomePage: View {
                     }
                     
                 }
+            }.alert(isPresented: $alert) {
+                Alert(title: Text(type == "lime" ? "+5 points" : "+1 point"), message: Text(type == "lime" ? "You rented a Lime e-bike/scooter!" : "You took an Uber!"), dismissButton: .default(Text("Got it!")) {
+                    if type == "lime" {
+                        points += 5
+                    } else {
+                        points += 1
+                    }
+                })
+                }
             }
         }
     }
-}
 
-struct HomePage_Previews: PreviewProvider {
-    static var previews: some View {
-        HomePage()
-    }
-}
+//struct HomePage_Previews: PreviewProvider {
+   // static var previews: some View {
+   //     HomePage()
+   // }
+//}

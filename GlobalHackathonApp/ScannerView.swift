@@ -11,7 +11,7 @@ import CodeScanner
 
 struct ScannerView: View {
     @Binding var points: Int
-    @AppStorage("date") var date: Int = Int(UInt64((Date().timeIntervalSince1970)))
+    @AppStorage("date") var date: Int = 0
     
     func check_time() -> Bool {
         let now: Int = Int(UInt64((Date().timeIntervalSince1970)))
