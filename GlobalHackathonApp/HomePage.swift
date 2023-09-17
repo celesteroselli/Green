@@ -85,7 +85,7 @@ struct HomePage: View {
                             .foregroundColor(.white)
                             .cornerRadius(8)
                     }
-                    NavigationLink(destination: LeaderboardView(points: $points)) {
+                    NavigationLink(destination: AchievementsView(points: $points)) {
                         HStack {
                             Text("Achievements")
                         }
