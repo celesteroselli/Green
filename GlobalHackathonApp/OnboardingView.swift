@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
-
+import ConfettiSwiftUI
+import NavigationTransitions
 struct OnboardingView: View {
-    
+    let impactFeedback = UIImpactFeedbackGenerator(style: .rigid)
+    @State private var counter = 0
     @Binding var name: String
     @Binding var onboarding: Bool
     @State var username: String = ""
@@ -20,6 +22,7 @@ struct OnboardingView: View {
     @State var uberLoginMessage: String = ""
     @State var uberLoginMessageColor: Color = Color.gray
     @State var limePhoneNumberInputCurrent: String = ""
+    @State private var bouncing = false
     var welcomeToGreenText: String = ""
     func onUberLoginAttempt(success: Bool, message: String) {
         if success {
@@ -31,21 +34,28 @@ struct OnboardingView: View {
         }
     }
     
+    
     var body: some View {
         
         NavigationView {
             
             TabView {
                 
-                
-                Text ("Swipe to start \(Image(systemName: "arrow.right"))")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                //         Button("linkGreen+Uber") {
-                //nothingyet
-                //             }
-                
+                HStack{
+                   
+                    Text ("Swipe to start")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.all)
+                    Image(systemName: "arrow.right")
+                        .frame(maxHeight:0.0000000000001, alignment: bouncing ? .bottom : .top)
+                        .animation(Animation.easeInOut(duration: 2.5).repeatForever(autoreverses: true), value: bouncing)
+                        .onAppear {
+                            self.bouncing.toggle()
+                        }
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                }
                 
                 VStack (spacing: 50) {
                     Text ("What should we call you?")
@@ -57,9 +67,13 @@ struct OnboardingView: View {
                 }
                 
                 
-                
-                Text("Welcome to Green, \(name)!")
-                    .font(.title2.bold())
+                if name == "" {
+                    Text("Welcome to Green!")
+                        .font(.title2.bold())
+                } else {
+                    Text("Welcome to Green, \(name)!")
+                        .font(.title2.bold())
+                }
                 
                 Text("Green is the only app that rewards you for choosing eco-friendly alternative transportation!")
                     .font(.headline)
@@ -69,11 +83,20 @@ struct OnboardingView: View {
                 Text("Let's Get Started!")
                     .font(.largeTitle.bold())
                 
-                Text("\(name), we'll need you to link your accounts.")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.all)
+                if name == "" {
+                    Text("We'll need to link your accounts.")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.all)
+                } else {
+                    Text("\(name), we'll need to link your accounts.")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.all)
+                }
+                    
                 
+            
                 VStack (spacing: 25){
                     Text("Connect your Uber account to get points for using rideshare.")
                         .font(.title2)
@@ -128,20 +151,50 @@ struct OnboardingView: View {
                         .padding(.all)
                 }
                 
-                VStack {
-                    NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
-                        Button("Let's do this!"){
-                            print(name)
-                            onboarding = false
-                        }
-                    }
-                } .buttonStyle(.bordered)
                 
+                
+                VStack {
+                    Text("Thanks!")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
+                        Button(action: {
+                            counter += 1
+                            print(name)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                onboarding = false
+                            }
+                     
+                          }) {
+                              
+                              Text("Let's do this!")
+                                  .font(.system(size: 25))
+                          
+                            
+                            
+                            
+                                  
+                        }
+                          
+                    }
+                    
+                } .buttonStyle(.bordered)
+                    
+
+                    
+                    
             }
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .tabViewStyle(.page(indexDisplayMode: .never))
+            
+            
         }
         
+        
+        .confettiCannon(counter: $counter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
     }
-    
-}
+        
+        }
+       
+
+

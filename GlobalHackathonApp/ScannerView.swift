@@ -7,9 +7,11 @@
 
 import SwiftUI
 import CodeScanner
-
+import ConfettiSwiftUI
 
 struct ScannerView: View {
+    let impactFeedback = UIImpactFeedbackGenerator(style: .soft)
+    @State private var counter: Int = 0
     @Binding var points: Int
     @AppStorage("date") var date: Int = 0
     @State var scanner_alert: Bool = false
@@ -48,14 +50,17 @@ struct ScannerView: View {
                         }
                     }
                 } else if check_time() == false {
+                   
                     Text("Code scanned!")
                         .font(.title)
                         .multilineTextAlignment(.center)
+                        // dont delete          counter += 1
                 }
             }.alert(isPresented: $scanner_alert) {
+                
                 Alert(title: Text("You took public transit!"), message: Text("You've been rewarded 3 points"), dismissButton: .default(Text("Got it!"))) }
         }.navigationTitle("QR Scanner")
-        
+            .confettiCannon(counter: $counter, radius: 500.0)
     }
 }
 
