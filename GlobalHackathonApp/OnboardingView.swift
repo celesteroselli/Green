@@ -26,6 +26,7 @@ struct OnboardingView: View {
     @State var limePhoneNumberInputCurrent: String = ""
     @State private var bouncing = false
     @State var code: String = ""
+    @State var limeAccessToken: String = ""
     var welcomeToGreenText: String = ""
     func onUberLoginAttempt(success: Bool, message: String) {
         if success {
