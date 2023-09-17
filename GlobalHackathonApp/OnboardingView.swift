@@ -25,6 +25,7 @@ struct OnboardingView: View {
     @State var uberLoginMessageColor: Color = Color.gray
     @State var limePhoneNumberInputCurrent: String = ""
     @State private var bouncing = false
+    @State var code: String = ""
     var welcomeToGreenText: String = ""
     func onUberLoginAttempt(success: Bool, message: String) {
         if success {
@@ -170,10 +171,12 @@ struct OnboardingView: View {
                                 }
                             }
                         }
-                        
-                        
-                        
+
                     }
+                    TextField("Put in your 6-character code", text: $code)
+                        .padding()
+                        .keyboardType(.numberPad)
+                        .frame(width: nil)
                     
                     
                     Text("If you don't have a Lime account, just swipe to the next page.")
