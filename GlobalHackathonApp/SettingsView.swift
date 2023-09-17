@@ -66,33 +66,33 @@ struct SettingsView: View {
                             .onTapGesture {
                                 uber.doLogin(onCompletion: onUberLoginAttempt)
                             }
-                                             
-                                           }
-                            
                             
                         }
-                    } header: {
-                        Text("Link Accounts")
+                        
+                        
                     }
-                    
-                    
-                    
+                } header: {
+                    Text("Link Accounts")
                 }
-                .navigationTitle("Settings")
+                
+                
+                
             }
-            
-            
-            
+            .navigationTitle("Settings")
         }
         
         
+        
     }
-        
-        
-        //struct SettingsView_Previews: PreviewProvider {
-        //   static var previews: some View {
-        //      SettingsView()
-        //  }
-        //}
+    
+    
+}
+
+
+//struct SettingsView_Previews: PreviewProvider {
+//   static var previews: some View {
+//      SettingsView()
+//  }
+//}
 
 

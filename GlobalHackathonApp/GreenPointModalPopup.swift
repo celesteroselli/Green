@@ -11,18 +11,18 @@ struct openPageView: View {
     var body: some View {
         Text( "\(greenPointsTally)")
         
-    
+        
     }
     struct ContentView: View {
         @State private var showSheet = false
-
+        
         var body: some View {
             ZStack {
                 Button("Present") {
                     showSheet.toggle()
                 }
                 .font(.largeTitle)
-            
+                
                 if showSheet {
                     ZStack {
                         Button {

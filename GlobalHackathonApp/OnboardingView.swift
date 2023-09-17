@@ -15,13 +15,12 @@ struct OnboardingView: View {
     @Binding var alert: Bool
     @Binding var num_uber: Int
     @Binding var num_lime: Int
-    
     var uber: Uber = Uber()
     var lime: Lime = Lime()
     @State var uberLoginMessage: String = ""
     @State var uberLoginMessageColor: Color = Color.gray
     @State var limePhoneNumberInputCurrent: String = ""
-    
+    var welcomeToGreenText: String = ""
     func onUberLoginAttempt(success: Bool, message: String) {
         if success {
             self.uberLoginMessage = "Success"
@@ -58,6 +57,7 @@ struct OnboardingView: View {
                 }
                 
                 
+                
                 Text("Welcome to Green, \(name)!")
                     .font(.title2.bold())
                 
@@ -68,24 +68,6 @@ struct OnboardingView: View {
                 
                 Text("Let's Get Started!")
                     .font(.largeTitle.bold())
-                /*
-                 TextField("Enter Your Lime Phone Number", text: $limePhoneNumberInputCurrent) {
-                 .keyboardType(.phonePad)
-                 .onChange(of: limePhoneNumberInputCurrent) { newText in
-                 if (limePhoneNumberInputCurrent.count == 3) {
-                 limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
-                 } else if (limePhoneNumberInputCurrent.count == 8) {
-                 limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
-                 }
-                 }
-                 .onSubmit {
-                 lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) { success in
-                 if success {
-                 print("success")
-                 }
-                 }
-                 }
-                 */
                 
                 Text("\(name), we'll need you to link your accounts.")
                     .font(.largeTitle)
@@ -97,7 +79,7 @@ struct OnboardingView: View {
                         .font(.title2)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
-                    
+                        
                         uber.doLogin(onCompletion: onUberLoginAttempt)
                         
                     }
@@ -107,74 +89,53 @@ struct OnboardingView: View {
                     Text("If you don't have an Uber account, just swipe to the next page.")
                         .padding(.all)
                 }
-                var READMETOO = "This button is throwing off the onboarding because of a bug. (idk why)"
-                //  Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
-                //thisbuttonisdead
-                //  uber.doLogin(onCompletion: onUberLoginAttempt)
-                //  Button("linkGreen+Uber") {
-                //nothingyet
-                //      }
-                // Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
-                //thisbuttonisdead
-                //   uber.doLogin(onCompletion: onUberLoginAttempt)
-                //       }
+                
                 
                 VStack(spacing: 25){
+                    
                     Text("Next, connect your Lime account.")
                         .font(.title2)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     Text("You'll get points for taking electric bikes and scooters.")
-                TextField (
-                    "What's your Lime phone number?",
-                    text: $limePhoneNumberInputCurrent
-                )
-                .padding()
-                .keyboardType(.numberPad)
-                .frame(width: nil)
-                .onChange(of: limePhoneNumberInputCurrent) { newText in
-                    if (limePhoneNumberInputCurrent.count == 3) {
-                        limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
-                    } else if (limePhoneNumberInputCurrent.count == 7) {
-                        limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
-                    }
-                    if (limePhoneNumberInputCurrent.count == 10){
-                        lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) {
-                            success in if success {
-                                print("success")
+                    TextField (
+                        "What's your Lime phone number?",
+                        text: $limePhoneNumberInputCurrent
+                    )
+                    .padding()
+                    .keyboardType(.numberPad)
+                    .frame(width: nil)
+                    .onChange(of: limePhoneNumberInputCurrent) { newText in
+                        if (limePhoneNumberInputCurrent.count == 3) {
+                            limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
+                        } else if (limePhoneNumberInputCurrent.count == 7) {
+                            limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
+                        }
+                        if (limePhoneNumberInputCurrent.count == 10){
+                            lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) {
+                                success in if success {
+                                    print("success")
+                                }
                             }
                         }
+                        
+                        
+                        
                     }
-                    
-                  
-                    
-                }
                     
                     
                     Text("If you don't have a Lime account, just swipe to the next page.")
-                        
+                    
                         .padding(.all)
                 }
-                
-                
-                
-                
-                //      Text(uberLoginMessage)
-                //       .background(uberLoginMessageColor)
-                
                 
                 VStack {
                     NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
                         Button("Let's do this!"){
-                    print(name)
+                            print(name)
                             onboarding = false
                         }
                     }
-                }
-                
-                
-                
-                
-                
+                } .buttonStyle(.bordered)
                 
             }
             .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -183,14 +144,4 @@ struct OnboardingView: View {
         
     }
     
-    //#Preview {
-    //    LanchScreen()
-    //}
-    
-    
-    //struct OnboadingView_Previews: PreviewProvider {
-    //static var previews: some View {
-    //    OnboardingView()
-    // }
-    // }
 }

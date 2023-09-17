@@ -39,10 +39,10 @@ struct HomePage: View {
         NavigationView() {
             VStack {
                 if name == "" {
-                   Text("Welcome back to Green!")
-                    .padding()
-                    .font(.title)
-                    .multilineTextAlignment(.center)
+                    Text("Welcome back to Green!")
+                        .padding()
+                        .font(.title)
+                        .multilineTextAlignment(.center)
                 } else {
                     Text("Welcome back to Green, \(name)!")
                         .padding()
@@ -54,18 +54,18 @@ struct HomePage: View {
                     .font(.system(size: 85))
                     .padding(.bottom)
                 Text("Green Points Earned \(Image(systemName: "leaf.circle.fill"))")
-                   
+                
                     .font(.system(size: 26))
                 Spacer()
                 NavigationLink(destination: ScannerView(points: $points, name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
-                        Text("Scan QR Code")
+                    Text("Scan QR Code")
                         .font(.title)
                         .padding()
                         .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.accentColor, lineWidth: 3)
-                                )
-                    }
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.accentColor, lineWidth: 3)
+                        )
+                }
                 Spacer()
                 
                 HStack {
@@ -80,36 +80,36 @@ struct HomePage: View {
                         HStack {
                             Text("Achievements")
                         }
-                            .padding()
-                            .background(Color.accentColor)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
+                        .padding()
+                        .background(Color.accentColor)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
                     }
                     NavigationLink(destination: SettingsView(name: $name)) {
                         HStack {
                             Image(systemName: "gear")
                             Text("Settings")
                         }
-                            .padding()
-                            .background(Color.accentColor)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
+                        .padding()
+                        .background(Color.accentColor)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
                     }
                     
                 }
             }
             .alert(isPresented: $alert) {
-                Alert(title: Text(get_message()), message: Text("You've been rewarded \(add_points()) points"), dismissButton: .default(Text("Got it!")) {
+                Alert(title: Text(get_message()), message: Text("You've been rewarded \(add_points()) points"), dismissButton: .cancel(Text("Got it!")) {
                     points += add_points()
                     print(add_points())
                 })
-                }
             }
         }
     }
+}
 
 //struct HomePage_Previews: PreviewProvider {
-   // static var previews: some View {
-   //     HomePage()
-   // }
+// static var previews: some View {
+//     HomePage()
+// }
 //}

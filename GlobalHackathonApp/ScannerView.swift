@@ -55,13 +55,13 @@ struct ScannerView: View {
             }.alert(isPresented: $scanner_alert) {
                 Alert(title: Text("You took public transit!"), message: Text("You've been rewarded 3 points"), dismissButton: .default(Text("Got it!"))) }
         }.navigationTitle("QR Scanner")
-
+        
     }
 }
 
 //struct ScannerView_Previews: PreviewProvider {
-  //  @State var points: Int = 3
-  //  static var previews: some View {
-  //      ScannerView(points: $points)
-  //  }
+//  @State var points: Int = 3
+//  static var previews: some View {
+//      ScannerView(points: $points)
+//  }
 //}

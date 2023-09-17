@@ -64,7 +64,7 @@ struct LeaderboardView: View {
 }
 
 //struct LeaderboardView_Previews: PreviewProvider {
-    //static var previews: some View {
-  //     LeaderboardView()
-   // }
+//static var previews: some View {
+//     LeaderboardView()
+// }
 //}

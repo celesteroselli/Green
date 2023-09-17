@@ -8,40 +8,40 @@
 import SwiftUI
 
 struct PlaceAnnotationView: View {
-  @State private var showTitle = true
-  
-  let title: String
+    @State private var showTitle = true
+    
+    let title: String
     let address: String
-  
-  var body: some View {
-    VStack(spacing: 0) {
-      Text(title)
-        .font(.callout)
-        .padding(5)
-        .background(Color(.white))
-        .cornerRadius(10)
-        .opacity(showTitle ? 0 : 1)
-      
-      Image(systemName: "mappin.circle.fill")
-        .font(.title)
-        .foregroundColor(.green)
-      
-      Image(systemName: "arrowtriangle.down.fill")
-        .font(.caption)
-        .foregroundColor(.green)
-        .offset(x: 0, y: -5)
-        
-        Text(address)
-          .font(.callout)
-          .padding(5)
-          .background(Color(.white))
-          .cornerRadius(10)
-          .opacity(showTitle ? 0 : 1)
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Text(title)
+                .font(.callout)
+                .padding(5)
+                .background(Color(.white))
+                .cornerRadius(10)
+                .opacity(showTitle ? 0 : 1)
+            
+            Image(systemName: "mappin.circle.fill")
+                .font(.title)
+                .foregroundColor(.green)
+            
+            Image(systemName: "arrowtriangle.down.fill")
+                .font(.caption)
+                .foregroundColor(.green)
+                .offset(x: 0, y: -5)
+            
+            Text(address)
+                .font(.callout)
+                .padding(5)
+                .background(Color(.white))
+                .cornerRadius(10)
+                .opacity(showTitle ? 0 : 1)
+        }
+        .onTapGesture {
+            withAnimation(.easeInOut) {
+                showTitle.toggle()
+            }
+        }
     }
-    .onTapGesture {
-      withAnimation(.easeInOut) {
-        showTitle.toggle()
-      }
-    }
-  }
 }
