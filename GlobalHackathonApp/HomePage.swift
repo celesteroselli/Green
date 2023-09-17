@@ -11,7 +11,29 @@ struct HomePage: View {
     @Binding var name: String
     @Binding var alert: Bool
     @AppStorage("points") public var points: Int = 0
-    @Binding var type: String
+    @Binding var num_uber: Int
+    @Binding var num_lime: Int
+    
+    func get_message() -> String {
+        var message: String = "You took "
+        if num_lime > 0 {
+            message = message + "\(num_lime) Lime rentals"
+        }
+        if num_lime > 0 && num_uber > 0 {
+            message = message + " and "
+        }
+        if num_uber > 0 {
+            message = message + "\(num_uber) Ubers"
+        }
+        return message
+    }
+    
+    func add_points() -> Int {
+        //resets num_lime and num_uber to 0
+        num_lime = 0
+        num_uber = 0
+        return (5 * num_lime) + num_uber
+    }
     
     var body: some View {
         NavigationView() {
@@ -27,7 +49,7 @@ struct HomePage: View {
                 Text("Green Points Earned")
                     .font(.system(size: 26))
                 Spacer()
-                NavigationLink(destination: ScannerView(points: $points)) {
+                NavigationLink(destination: ScannerView(points: $points, name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
                         Text("Scan QR Code")
                         .font(.title)
                         .padding()
@@ -67,12 +89,9 @@ struct HomePage: View {
                     
                 }
             }.alert(isPresented: $alert) {
-                Alert(title: Text(type == "lime" ? "+5 points" : "+1 point"), message: Text(type == "lime" ? "You rented a Lime e-bike/scooter!" : "You took an Uber!"), dismissButton: .default(Text("Got it!")) {
-                    if type == "lime" {
-                        points += 5
-                    } else {
-                        points += 1
-                    }
+                Alert(title: Text(get_message()), message: Text("You've been rewarded \(add_points()) points"), dismissButton: .default(Text("Got it!")) {
+                    points += add_points()
+                    print(add_points())
                 })
                 }
             }

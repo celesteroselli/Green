@@ -12,6 +12,12 @@ import CodeScanner
 struct ScannerView: View {
     @Binding var points: Int
     @AppStorage("date") var date: Int = 0
+    @State var scanner_alert: Bool = false
+    @Binding var name: String
+    @Binding var alert: Bool
+    @Binding var num_uber: Int
+    @Binding var num_lime: Int
+    @State var showDetail: Bool = false
     
     func check_time() -> Bool {
         let now: Int = Int(UInt64((Date().timeIntervalSince1970)))
@@ -30,10 +36,10 @@ struct ScannerView: View {
                         switch response {
                         case .success(let result):
                             if (result.string) == "Success" {
-                                print("Points added!")
+                                print("Scanner is locked out for 5 minutes to prevent double-scanning")
+                                scanner_alert = true
                                 date = Int(UInt64((Date().timeIntervalSince1970)))
-                                points += 1
-                                //trigger a modal to pop out saying that points were added
+                                points += 3
                                 
                             }
                         case .failure(let error):
@@ -46,8 +52,10 @@ struct ScannerView: View {
                         .font(.title)
                         .multilineTextAlignment(.center)
                 }
-            }
+            }.alert(isPresented: $scanner_alert) {
+                Alert(title: Text("You took public transit!"), message: Text("You've been rewarded 3 points"), dismissButton: .default(Text("Got it!"))) }
         }.navigationTitle("QR Scanner")
+
     }
 }
 

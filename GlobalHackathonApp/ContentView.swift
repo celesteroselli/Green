@@ -13,33 +13,31 @@ struct ContentView: View {
     @AppStorage("onboarding") var onboarding: Bool = true
     @AppStorage("name") var name: String = ""
     @AppStorage("alert") var alert: Bool = false
-    @AppStorage("type") var type: String = ""
+    @AppStorage("num_uber") var num_uber: Int = 0
+    @AppStorage("num_lime") var num_lime: Int = 0
     
     func should_alert() -> Binding<Bool> {
-        //check if user is logged into uber
-        //check if user is logged into lime
-        //if user's uber rides have increased, alert = true
-        //type = "uber"
-        //if user's lime rides have increased, alert = true
-        //type = "lime"
-        //else, alerts = false
-        type = ""
+        //check if user logged in to uber
+        //if so, check if new ride
+        //if so, for each new ride, add 1 to num_uber, and make alert = true
+        //check if user logged in to lime
+        //if so, check if new rental
+        //if so, for each new rental, add 1 to num_lime, and make alert = true
+        num_uber = 0
+        num_lime = 0
         alert = false
         return $alert
-    }
-    func get_type() -> Binding<String> {
-        return $type
     }
     
     var body: some View {
         
         if onboarding {
-            OnboardingView(name: $name, onboarding: $onboarding, alert: $alert, type: get_type())
+            OnboardingView(name: $name, onboarding: $onboarding, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)
         } else {
             //if user's uber rides have increased, alert = true
             //if user's lime rides have increased, alert = true
             //else, alerts = false
-            HomePage(name: $name, alert: should_alert(), type: get_type())
+            HomePage(name: $name, alert: should_alert(), num_uber: $num_uber, num_lime: $num_lime)
         }
         
     }

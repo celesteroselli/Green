@@ -13,7 +13,8 @@ struct OnboardingView: View {
     @Binding var onboarding: Bool
     @State var username: String = ""
     @Binding var alert: Bool
-    @Binding var type: String
+    @Binding var num_uber: Int
+    @Binding var num_lime: Int
     
     var uber: Uber = Uber()
     var lime: Lime = Lime()
@@ -138,7 +139,7 @@ struct OnboardingView: View {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                         TextField("Enter username", text: $name)
-                    NavigationLink(destination: HomePage(name: $name, alert: $alert, type: $type)) {
+                    NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
                             Button("Continue to home page") {
                                 print(name)
                                 onboarding = false
