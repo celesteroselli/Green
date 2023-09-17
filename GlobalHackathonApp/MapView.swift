@@ -31,8 +31,9 @@ struct MapView: View {
             )
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
+                
                 Map(coordinateRegion: $region,
                     annotationItems: annotations
                 ) { place in
@@ -42,10 +43,16 @@ struct MapView: View {
                 }
                 
             }
+          
             .ignoresSafeArea(.all)
+            //Adds a toolbar to the map screen
         }.navigationTitle("Green Sites Near Me")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.visible, for: .navigationBar)
+            }
+        
     }
-        }
+
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {

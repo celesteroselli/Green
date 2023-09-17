@@ -33,51 +33,60 @@ struct SettingsView: View {
                     Text("Name")
                     
                 }
-            }
-            
-            
-            
-            
-        }
-        Form {
-            Section {
-                TextField (
-                    "What's your Lime phone number?",
-                    text: $limePhoneNumberInputCurrent
-                )
-
-                .keyboardType(.numberPad)
-                .frame(width: nil)
-                .onChange(of: limePhoneNumberInputCurrent) { newText in
-                    if (limePhoneNumberInputCurrent.count == 3) {
-                        limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
-                    } else if (limePhoneNumberInputCurrent.count == 7) {
-                        limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
-                    }
-                    if (limePhoneNumberInputCurrent.count == 10){
-                        lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) {
-                            success in if success {
-                                print("success")
-                            }
+                
+                
+                
+                
+                
+                
+                
+                Section {
+                    TextField (
+                        "What's your Lime phone number?",
+                        text: $limePhoneNumberInputCurrent
+                    )
+                    
+                    .keyboardType(.numberPad)
+                    .frame(width: nil)
+                    .onChange(of: limePhoneNumberInputCurrent) { newText in
+                        if (limePhoneNumberInputCurrent.count == 3) {
+                            limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
+                        } else if (limePhoneNumberInputCurrent.count == 7) {
+                            limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
                         }
-                        
+                        if (limePhoneNumberInputCurrent.count == 10){
+                            lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) {
+                                success in if success {
+                                    print("success")
+                                }
+                            }
+                            Button("Link Uber to Green", systemImage: "link.badge.plus") {
+                                
+                            }
+                            .onTapGesture {
+                                uber.doLogin(onCompletion: onUberLoginAttempt)
+                            }
+                                             
+                                           }
+                            
+                            
+                        }
+                    } header: {
+                        Text("Link Accounts")
                     }
+                    
+                    
+                    
                 }
-                
-                
-                
-            }header: {
-                Text("Name")
+                .navigationTitle("Settings")
             }
-            .navigationTitle("Settings")
+            
+            
+            
         }
         
         
-        
-        
-        
-        
-        
+    }
         
         
         //struct SettingsView_Previews: PreviewProvider {
@@ -85,5 +94,5 @@ struct SettingsView: View {
         //      SettingsView()
         //  }
         //}
-    }
-}
+
+

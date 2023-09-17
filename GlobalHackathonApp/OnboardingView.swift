@@ -48,9 +48,17 @@ struct OnboardingView: View {
                 //             }
                 
                 
+                VStack (spacing: 50) {
+                    Text ("What should we call you?")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    TextField("Enter your name", text: $name)
+                        .padding(.all)
+                    Text ("Just swipe when you're done.")
+                }
                 
                 
-                Text("Welcome to Green!")
+                Text("Welcome to Green, \(name)!")
                     .font(.title2.bold())
                 
                 Text("Green is the only app that rewards you for choosing eco-friendly alternative transportation!")
@@ -78,12 +86,27 @@ struct OnboardingView: View {
                  }
                  }
                  */
-                Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
+                
+                Text("\(name), we'll need you to link your accounts.")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.all)
+                
+                VStack (spacing: 25){
+                    Text("Connect your Uber account to get points for using rideshare.")
+                        .font(.title2)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
                     
-                    uber.doLogin(onCompletion: onUberLoginAttempt)
+                        uber.doLogin(onCompletion: onUberLoginAttempt)
+                        
+                    }
                     
+                    .buttonStyle(.borderedProminent)
+                    
+                    Text("If you don't have an Uber account, just swipe to the next page.")
+                        .padding(.all)
                 }
-                .buttonStyle(.borderedProminent)
                 var READMETOO = "This button is throwing off the onboarding because of a bug. (idk why)"
                 //  Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
                 //thisbuttonisdead
@@ -96,7 +119,11 @@ struct OnboardingView: View {
                 //   uber.doLogin(onCompletion: onUberLoginAttempt)
                 //       }
                 
-                
+                VStack(spacing: 25){
+                    Text("Next, connect your Lime account.")
+                        .font(.title2)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    Text("You'll get points for taking electric bikes and scooters.")
                 TextField (
                     "What's your Lime phone number?",
                     text: $limePhoneNumberInputCurrent
@@ -115,57 +142,55 @@ struct OnboardingView: View {
                             success in if success {
                                 print("success")
                             }
-                    }
-                }
-                
-             
-                        
-                        
-                        
-                        
-                        
-                        
-                    }
-                    
-                    
-                    
-                    
-                    //      Text(uberLoginMessage)
-                    //       .background(uberLoginMessageColor)
-                    
-                    
-                VStack {
-                        Text ("Enter Username")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                        TextField("Enter username", text: $name)
-                    NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
-                            Button("Continue to home page") {
-                                print(name)
-                                onboarding = false
-                            }
                         }
+                    }
+                    
+                  
+                    
                 }
                     
                     
-                    
-                    
-                    
+                    Text("If you don't have a Lime account, just swipe to the next page.")
+                        
+                        .padding(.all)
+                }
                 
+                
+                
+                
+                //      Text(uberLoginMessage)
+                //       .background(uberLoginMessageColor)
+                
+                
+                VStack {
+                    NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
+                        Button("Let's do this!"){
+                    print(name)
+                            onboarding = false
+                        }
+                    }
                 }
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                
+                
+                
+                
                 
             }
+            .textFieldStyle(RoundedBorderTextFieldStyle())
             .tabViewStyle(.page(indexDisplayMode: .never))
         }
         
-        //#Preview {
-        //    LanchScreen()
-        //}
-        
     }
+    
+    //#Preview {
+    //    LanchScreen()
+    //}
+    
+    
     //struct OnboadingView_Previews: PreviewProvider {
-        //static var previews: some View {
-        //    OnboardingView()
-       // }
-   // }
+    //static var previews: some View {
+    //    OnboardingView()
+    // }
+    // }
+}

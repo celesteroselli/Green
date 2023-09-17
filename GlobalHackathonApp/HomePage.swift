@@ -43,17 +43,18 @@ struct HomePage: View {
                     .padding()
                     .font(.title)
                     .multilineTextAlignment(.center)
-                } else {                    
+                } else {
                     Text("Welcome back to Green, \(name)!")
                         .padding()
                         .font(.title)
                         .multilineTextAlignment(.center)
                 }
                 Spacer()
-                Text(String(points))
+                Text(String("\(points)"))
                     .font(.system(size: 85))
                     .padding(.bottom)
-                Text("Green Points Earned")
+                Text("Green Points Earned \(Image(systemName: "leaf.circle.fill"))")
+                   
                     .font(.system(size: 26))
                 Spacer()
                 NavigationLink(destination: ScannerView(points: $points, name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
@@ -66,6 +67,7 @@ struct HomePage: View {
                                 )
                     }
                 Spacer()
+                
                 HStack {
                     NavigationLink(destination: MapView()) {
                         Text("Map")
@@ -95,7 +97,8 @@ struct HomePage: View {
                     }
                     
                 }
-            }.alert(isPresented: $alert) {
+            }
+            .alert(isPresented: $alert) {
                 Alert(title: Text(get_message()), message: Text("You've been rewarded \(add_points()) points"), dismissButton: .default(Text("Got it!")) {
                     points += add_points()
                     print(add_points())
