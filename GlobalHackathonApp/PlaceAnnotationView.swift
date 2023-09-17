@@ -10,10 +10,12 @@ import SwiftUI
 struct PlaceAnnotationView: View {
     @State private var showTitle = true
     
+    //gets title and address when called for each location
     let title: String
     let address: String
     
     var body: some View {
+        //shows title, then map pin image, then address underneath
         VStack(spacing: 0) {
             Text(title)
                 .font(.callout)
@@ -38,6 +40,7 @@ struct PlaceAnnotationView: View {
                 .cornerRadius(10)
                 .opacity(showTitle ? 0 : 1)
         }
+        //on tap, toggles tile and address
         .onTapGesture {
             withAnimation(.easeInOut) {
                 showTitle.toggle()
