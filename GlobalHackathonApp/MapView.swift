@@ -8,6 +8,8 @@
 import SwiftUI
 import MapKit
 
+//defines Place structure, with ID, name, coordinates, and address
+//used to define "Green Sites" to be shown on Map
 struct Place: Identifiable {
     let id = UUID()
     var name: String
@@ -17,6 +19,8 @@ struct Place: Identifiable {
 
 struct MapView: View {
     
+    //list of all "Green Sites" currently used
+    //these are real sustainable businesses in NYC! Look them up!
     let annotations = [
         Place(name: "Zero Waste Daniel", coordinate: CLLocationCoordinate2D(latitude: 40.704260, longitude: -73.933610), address: "257 Varet St, Brooklyn, NY"),
         Place(name: "Planted", coordinate: CLLocationCoordinate2D(latitude: 40.680510, longitude: -73.994430), address: "333 Smith St, Brooklyn, NY"),
@@ -25,6 +29,8 @@ struct MapView: View {
         Place(name: "Baggu", coordinate: CLLocationCoordinate2D(latitude: 40.717480, longitude: -73.962790), address: "242 Wythe Avenue #4, Brooklyn, NY 11249")
     ]
     
+    //Creates the region of the map automatically loaded (NYC)
+    //In a production version of this app, with more cities participating in it, this would be replaced by user location
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 40.7128, longitude: -74.0060),
         span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
@@ -33,10 +39,11 @@ struct MapView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                
+                //Shows map with Green Sites displayed
                 Map(coordinateRegion: $region,
                     annotationItems: annotations
                 ) { place in
+                    //for each annotation, display a PlaceAnnotationView
                     MapAnnotation(coordinate: place.coordinate) {
                         PlaceAnnotationView(title: place.name, address: place.address)
                     }

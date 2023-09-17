@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct HomePage: View {
+    //declares variables, and binds other stored variables from ContentView
     @Binding var name: String
     @Binding var alert: Bool
     @AppStorage("points") public var points: Int = 0
     @Binding var num_uber: Int
     @Binding var num_lime: Int
     
+    //gets alert message based off of how many new uber/lime rides have been taken
     func get_message() -> String {
         var message: String = "You took "
         if num_lime > 0 {
@@ -28,6 +30,7 @@ struct HomePage: View {
         return message
     }
     
+    //calculates points to add based off of how many new uber/lime rides have been taken
     func add_points() -> Int {
         //resets num_lime and num_uber to 0
         num_lime = 0
@@ -37,6 +40,7 @@ struct HomePage: View {
     
     var body: some View {
         NavigationView() {
+            //shows welcome title based, with name greeting if you have entered your name
             VStack {
                 if name == "" {
                     Text("Welcome back to Green!")
@@ -50,6 +54,8 @@ struct HomePage: View {
                         .multilineTextAlignment(.center)
                 }
                 Spacer()
+                
+                //shows total # of points
                 Text(String("\(points)"))
                     .font(.system(size: 85))
                     .padding(.bottom)
@@ -57,6 +63,8 @@ struct HomePage: View {
                 
                     .font(.system(size: 26))
                 Spacer()
+                
+                //link to scan public transit QR codes
                 NavigationLink(destination: ScannerView(points: $points, name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
                     Text("Scan QR Code")
                         .font(.title)
@@ -68,6 +76,7 @@ struct HomePage: View {
                 }
                 Spacer()
                 
+                //bottom navigation menu with navigation links to Map, Achievements, and Settings
                 HStack {
                     NavigationLink(destination: MapView()) {
                         Text("Map")
@@ -97,7 +106,7 @@ struct HomePage: View {
                     }
                     
                 }
-            }
+            } //settings for alert that will show if there are new uber/lime rides
             .alert(isPresented: $alert) {
                 Alert(title: Text(get_message()), message: Text("You've been rewarded \(add_points()) points"), dismissButton: .cancel(Text("Got it!")) {
                     points += add_points()
@@ -107,9 +116,3 @@ struct HomePage: View {
         }
     }
 }
-
-//struct HomePage_Previews: PreviewProvider {
-// static var previews: some View {
-//     HomePage()
-// }
-//}

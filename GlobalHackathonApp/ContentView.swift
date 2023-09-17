@@ -30,7 +30,8 @@ struct ContentView: View {
     }
     
     var body: some View {
-        
+        //checks onboarding variable to see if it should show onboarding view (for first time) or home page view
+        //passes stored variables
         if onboarding {
             OnboardingView(name: $name, onboarding: $onboarding, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)
         } else {
