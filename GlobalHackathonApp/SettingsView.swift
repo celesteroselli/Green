@@ -73,6 +73,11 @@ struct SettingsView: View {
                     }
                 } header: {
                     Text("Link Accounts")
+                    Section{
+                        Text("test")
+                    }header: {
+                        Text("Account Status")
+                    }
                 }
                 
                 

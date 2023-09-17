@@ -10,6 +10,8 @@ import ConfettiSwiftUI
 import NavigationTransitions
 struct OnboardingView: View {
     let impactFeedback = UIImpactFeedbackGenerator(style: .rigid)
+    @State private var uberIsDone: Bool = false
+    @State private var limeisDone: Bool = false
     @State private var counter = 0
     @Binding var name: String
     @Binding var onboarding: Bool
@@ -42,7 +44,7 @@ struct OnboardingView: View {
             TabView {
                 
                 HStack{
-                   
+                    
                     Text ("Swipe to start")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -94,17 +96,33 @@ struct OnboardingView: View {
                         .fontWeight(.bold)
                         .padding(.all)
                 }
-                    
                 
-            
+                
+                
                 VStack (spacing: 25){
-                    Text("Connect your Uber account to get points for using rideshare.")
-                        .font(.title2)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
+                    if uberIsDone == false {
+                        
+                        Text("Connect your Uber account to get points for using rideshare.")
+                            .font(.largeTitle)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .padding(.all)
+                    } else if uberIsDone == true {
+                      
+                            Text("Connect your Uber account to get points for using rideshare. \(Image(systemName: "checkmark"))")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .padding(.all)
+                        
+                    
+                        
+                            
+                    }
+                    Button("Link Uber to Green")
+                    {
                         
                         uber.doLogin(onCompletion: onUberLoginAttempt)
-                        
+                        impactFeedback.impactOccurred()
+                        uberIsDone = true
                     }
                     
                     .buttonStyle(.borderedProminent)
@@ -116,9 +134,19 @@ struct OnboardingView: View {
                 
                 VStack(spacing: 25){
                     
-                    Text("Next, connect your Lime account.")
-                        .font(.title2)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    if limeisDone == true {
+                        
+                        Text("Connect your Lime account to get points for taking electric bikes and scooters. \(Image(systemName: "checkmark"))")
+                            .font(.title2)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .padding(.all)
+                    } else {
+                        Text("Connect your Lime account to get points for taking electric bikes and scooters.")
+                            .font(.title2)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .padding(.all)
+                    }
+                    
                     Text("You'll get points for taking electric bikes and scooters.")
                     TextField (
                         "What's your Lime phone number?",
@@ -137,6 +165,8 @@ struct OnboardingView: View {
                             lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) {
                                 success in if success {
                                     print("success")
+                                    limeisDone = true
+                                    impactFeedback.impactOccurred()
                                 }
                             }
                         }
@@ -161,28 +191,28 @@ struct OnboardingView: View {
                         Button(action: {
                             counter += 1
                             print(name)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                                 onboarding = false
                             }
-                     
-                          }) {
-                              
-                              Text("Let's do this!")
-                                  .font(.system(size: 25))
-                          
+                            
+                        }) {
+                            
+                            Text("Let's do this!")
+                                .font(.system(size: 25))
                             
                             
                             
-                                  
+                            
+                            
                         }
-                          
+                        
                     }
                     
                 } .buttonStyle(.bordered)
-                    
-
-                    
-                    
+                
+                
+                
+                
             }
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .tabViewStyle(.page(indexDisplayMode: .never))
@@ -193,8 +223,8 @@ struct OnboardingView: View {
         
         .confettiCannon(counter: $counter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
     }
-        
-        }
-       
+    
+}
+
 
 
