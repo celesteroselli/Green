@@ -60,15 +60,15 @@ struct SettingsView: View {
                                     print("success")
                                 }
                             }
-                            Button("Link Uber to Green", systemImage: "link.badge.plus") {
-                                
-                            }
-                            .onTapGesture {
-                                uber.doLogin(onCompletion: onUberLoginAttempt)
-                            }
+                            
                             
                         }
                         
+                        
+                    }
+                    Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
+                        
+                        uber.doLogin(onCompletion: onUberLoginAttempt)
                         
                     }
                 } header: {
