@@ -38,10 +38,17 @@ struct HomePage: View {
     var body: some View {
         NavigationView() {
             VStack {
-                Text("Welcome back to Green, \(name)!")
+                if name == "" {
+                   Text("Welcome back to Green!")
                     .padding()
                     .font(.title)
                     .multilineTextAlignment(.center)
+                } else {                    
+                    Text("Welcome back to Green, \(name)!")
+                        .padding()
+                        .font(.title)
+                        .multilineTextAlignment(.center)
+                }
                 Spacer()
                 Text(String(points))
                     .font(.system(size: 85))
