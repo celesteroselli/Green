@@ -24,9 +24,15 @@ struct Uber {
         })
     }
     
+    func isLoggedIn() -> Bool { return RidesClient().hasServerToken}
+    
+    //Returns the last 5 rides in a callback called onFinish
     func getRecentRides(onFinish: @escaping (TripHistory?, Response) -> Void) -> Void {
         let ridesClient = RidesClient();
-        if !ridesClient.hasServerToken{return}
+        if !ridesClient.hasServerToken{
+            print("getRecentRides called but no Uber Token")
+            return
+        }
         ridesClient.fetchTripHistory(completion: onFinish)
     }
 }
