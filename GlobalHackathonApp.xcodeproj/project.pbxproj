@@ -11,6 +11,8 @@
 		0F00C32B2AB50BAB0024F3C2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F00C3292AB50BAB0024F3C2 /* Model.xcdatamodeld */; };
 		0F2AC4B02AB7510A00B17AFF /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 0F2AC4AF2AB7510A00B17AFF /* ConfettiSwiftUI */; };
 		0F2AC4B32AB7604100B17AFF /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 0F2AC4B22AB7604100B17AFF /* NavigationTransitions */; };
+		0F489CF72ABA626A001E6D5B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F489CF62ABA626A001E6D5B /* Launch Screen.storyboard */; };
+		0F489CF92ABA639A001E6D5B /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F489CF82ABA639A001E6D5B /* LaunchScreen.swift */; };
 		15EE729E901E1E9CE7235A8F /* Pods_GlobalHackathonApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB6202AADDB4D1CC193794D /* Pods_GlobalHackathonApp.framework */; };
 		2EA3B22908BEAEC2058716EC /* Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE3444CDA841DF7D48703BB /* Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework */; };
 		55EC75943D3C9D82638988AA /* Pods_GlobalHackathonAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A3612C0372F874B2C18BF5 /* Pods_GlobalHackathonAppTests.framework */; };
@@ -53,6 +55,8 @@
 /* Begin PBXFileReference section */
 		0F00C3272AB5050E0024F3C2 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		0F00C32A2AB50BAB0024F3C2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		0F489CF62ABA626A001E6D5B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		0F489CF82ABA639A001E6D5B /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		386717E4FF3CF2ADB58A5CA2 /* Pods-GlobalHackathonAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalHackathonAppTests.release.xcconfig"; path = "Target Support Files/Pods-GlobalHackathonAppTests/Pods-GlobalHackathonAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		4AE3444CDA841DF7D48703BB /* Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GlobalHackathonApp_GlobalHackathonAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B0378222AB10F02008BCA99 /* GlobalHackathonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalHackathonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +164,8 @@
 				5B0378252AB10F02008BCA99 /* GlobalHackathonAppApp.swift */,
 				5B0378272AB10F02008BCA99 /* ContentView.swift */,
 				0F00C3272AB5050E0024F3C2 /* OnboardingView.swift */,
+				0F489CF62ABA626A001E6D5B /* Launch Screen.storyboard */,
+				0F489CF82ABA639A001E6D5B /* LaunchScreen.swift */,
 				5BB91FC52AB556D100DE0096 /* HomePage.swift */,
 				5B7BC4AF2AB3D90500979C03 /* ScannerView.swift */,
 				5BDA62DB2AB3E49400B2B4CF /* MapView.swift */,
@@ -329,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F489CF72ABA626A001E6D5B /* Launch Screen.storyboard in Resources */,
 				5B03782D2AB10F04008BCA99 /* Preview Assets.xcassets in Resources */,
 				5B03782A2AB10F04008BCA99 /* Assets.xcassets in Resources */,
 			);
@@ -458,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F489CF92ABA639A001E6D5B /* LaunchScreen.swift in Sources */,
 				5B7BC4B02AB3D90500979C03 /* ScannerView.swift in Sources */,
 				939C0C102AB3F1FF00D92508 /* Uber.swift in Sources */,
 				0F00C3282AB5050E0024F3C2 /* OnboardingView.swift in Sources */,
@@ -632,7 +640,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GlobalHackathonApp/Preview Content\"";
-				DEVELOPMENT_TEAM = X46J5X7772;
+				DEVELOPMENT_TEAM = 9YU52TBQ6H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GlobalHackathonApp/Info.plist;
@@ -667,7 +675,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GlobalHackathonApp/Preview Content\"";
-				DEVELOPMENT_TEAM = X46J5X7772;
+				DEVELOPMENT_TEAM = 9YU52TBQ6H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GlobalHackathonApp/Info.plist;

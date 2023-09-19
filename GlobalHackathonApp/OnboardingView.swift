@@ -54,7 +54,7 @@ struct OnboardingView: View {
                     Text ("Swipe to start")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .padding(.all)
+                        .padding(30)
                     Image(systemName: "arrow.right")
                         .frame(maxHeight:0.0000000000001, alignment: bouncing ? .bottom : .top)
                         .animation(Animation.easeInOut(duration: 2.5).repeatForever(autoreverses: true), value: bouncing)
@@ -63,53 +63,65 @@ struct OnboardingView: View {
                         }
                         .font(.largeTitle)
                         .fontWeight(.bold)
+                        
                 }
                 
                 VStack (spacing: 50) {
                     Text ("What should we call you?")
                         .font(.largeTitle)
+                        .padding(30)
                         .fontWeight(.bold)
                     TextField("Enter your name", text: $name)
-                        .padding(.all)
+                        .padding(30)
                     Text ("Just swipe when you're done.")
+                        .padding(30)
                 }
                 
                 
                 if name == "" {
                     Text("Welcome to Green!")
                         .font(.title2.bold())
+                        .padding(30)
                 } else {
                     Text("Welcome to Green, \(name)!")
                         .font(.title2.bold())
+                        .padding(30)
                 }
                 
                 Text("Green is the only app that rewards you for choosing eco-friendly alternative transportation!")
                     .font(.headline)
-                    .padding(.all)
+                    .padding(30)
+                
+                
                 Text("Let's Get Started!")
                     .font(.largeTitle.bold())
+                    .padding(30)
                 if name == "" {
                     Text("We'll need to link your accounts.")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .padding(.all)
+                        .padding(30)
                 } else {
                     Text("\(name), we'll need to link your accounts.")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .padding(.all)
+                        .padding(30)
                 }
                 VStack (spacing: 25){
                     if uberIsDone == false {
                         Text("Connect your Uber account to get points for using rideshare.")
                             .font(.largeTitle)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .padding(.all)
+                            .padding(30)
                     } else if uberIsDone == true {
                             Text("Connect your Uber account to get points for using rideshare. \(Image(systemName: "checkmark"))")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
-                                .padding(.all)
+                                .padding(30)
+                        
+                    
+                        
+                            
                     }
                     Button("Link Uber to Green")
                     {
@@ -120,9 +132,11 @@ struct OnboardingView: View {
                     .buttonStyle(.borderedProminent)
                     Text(uberLoginMessage)
                         .foregroundColor(uberLoginMessageColor)
+                        .padding(30)
+                       
                     
                     Text("If you don't have an Uber account, just swipe to the next page.")
-                        .padding(.all)
+                        .padding(30)
                 }
                 VStack(spacing: 25){
                     
@@ -131,20 +145,21 @@ struct OnboardingView: View {
                         Text("Connect your Lime account to get points for taking electric bikes and scooters. \(Image(systemName: "checkmark"))")
                             .font(.title2)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .padding(.all)
+                            .padding(30)
                     } else {
                         Text("Connect your Lime account to get points for taking electric bikes and scooters.")
                             .font(.title2)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            .padding(.all)
+                            .padding(30)
                     }
                     
-                    Text("You'll get points for taking electric bikes and scooters.")
+                    
                     TextField (
                         "What's your Lime phone number?",
                         text: $limePhoneNumberInputCurrent
+                            
                     )
-                    .padding()
+                    .padding(30)
                     .keyboardType(.numberPad)
                     .frame(width: nil)
                     .onChange(of: limePhoneNumberInputCurrent) { newText in
@@ -171,7 +186,7 @@ struct OnboardingView: View {
                     }
                     .foregroundColor(limePhoneNumberColor)
                     TextField("Put in your 6-character code", text: $code)
-                        .padding()
+                        .padding(30)
                         .keyboardType(.numberPad)
                         .frame(width: nil)
                         .onChange(of: code) { newText in
@@ -188,31 +203,45 @@ struct OnboardingView: View {
                             }
                         }
                     Text("If you don't have a Lime account, just swipe to the next page.")
-                        .padding(.all)
+                    
+                        .padding(30)
                 }
-                if final {
-                    VStack {
-                        Text("Thanks!")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                        NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
-                            Button(action: {
-                                counter += 1
-                                print(name)
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                                    onboarding = false
-                                }
-                                
-                            }) {
-                                
-                                Text("Let's do this!")
-                                    .font(.system(size: 25))
+                
+                
+                
+                VStack {
+                    Text("Thanks!")
+                        .padding(30)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
+                        Button(action: {
+                            counter += 1
+                            print(name)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                                onboarding = false
                             }
+                            
+                        }) {
+                            
+                            Text("Let's do this!")
+                                .font(.system(size: 25))
+                                .padding(30)
+                            
+                            
+                            
+                            
                             
                         }
                         
-                    } .buttonStyle(.bordered)
-                }
+                    }
+                    
+                } .buttonStyle(.bordered)
+                    
+                
+                
+                
+                
             }
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .tabViewStyle(.page(indexDisplayMode: .never))
