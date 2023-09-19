@@ -19,7 +19,7 @@ struct Uber {
                 onCompletion(true, "Success!")
             } else {
                 print(error!)
-                onCompletion(false, "Error Code: " + (error!.localizedDescription))
+                onCompletion(false, "Error: " + (error!.localizedDescription))
             }
         })
     }

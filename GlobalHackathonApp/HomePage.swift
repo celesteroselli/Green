@@ -15,6 +15,8 @@ struct HomePage: View {
     @Binding var alert: Bool
     @AppStorage("points") public var points: Int = 0
     @AppStorage("lastUberRide") public var lastUberRide: Double = Date.now.timeIntervalSince1970
+    @AppStorage("limeToken") public var limeToken: String = ""
+    @AppStorage("limeCookie") public var limeCookie: String = ""
     @Binding var num_uber: Int
     @Binding var num_lime: Int
     var uber: Uber = Uber()

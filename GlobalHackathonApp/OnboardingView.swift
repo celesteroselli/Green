@@ -23,18 +23,24 @@ struct OnboardingView: View {
     var lime: Lime = Lime()
     @State var uberLoginMessage: String = ""
     @State var uberLoginMessageColor: Color = Color.gray
+    @State var limePhoneNumberColor: Color = Color.gray
     @State var limePhoneNumberInputCurrent: String = ""
     @State private var bouncing = false
     @State var code: String = ""
-    @State var limeAccessToken: String = ""
+    @AppStorage("limeToken") var limeAccessToken: String = ""
+    @AppStorage("limeCookie") var limeCookie: String = ""
     var welcomeToGreenText: String = ""
     func onUberLoginAttempt(success: Bool, message: String) {
         if success {
             self.uberLoginMessage = "Success"
             self.uberLoginMessageColor = Color.green
+            impactFeedback.impactOccurred()
+            uberIsDone = true
         } else {
-            self.uberLoginMessage = "Error: " + message
+            self.uberLoginMessage = message
             self.uberLoginMessageColor = Color.red
+            impactFeedback.impactOccurred()
+            uberIsDone = false
         }
     }
     
@@ -123,11 +129,11 @@ struct OnboardingView: View {
                     {
                         
                         uber.doLogin(onCompletion: onUberLoginAttempt)
-                        impactFeedback.impactOccurred()
-                        uberIsDone = true
                     }
                     
                     .buttonStyle(.borderedProminent)
+                    Text(uberLoginMessage)
+                        .foregroundColor(uberLoginMessageColor)
                     
                     Text("If you don't have an Uber account, just swipe to the next page.")
                         .padding(.all)
@@ -163,21 +169,32 @@ struct OnboardingView: View {
                         } else if (limePhoneNumberInputCurrent.count == 7) {
                             limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
                         }
-                        if (limePhoneNumberInputCurrent.count == 10){
+                        if (limePhoneNumberInputCurrent.count == 12){
                             lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) {
                                 success in if success {
-                                    print("success")
-                                    limeisDone = true
-                                    impactFeedback.impactOccurred()
+                                    print("lime phone number submission success")
+                                    limePhoneNumberColor = Color.green
                                 }
                             }
                         }
 
                     }
+                    .foregroundColor(limePhoneNumberColor)
                     TextField("Put in your 6-character code", text: $code)
                         .padding()
                         .keyboardType(.numberPad)
                         .frame(width: nil)
+                        .onChange(of: code) { newText in
+                            if (code.count == 6) {
+                                lime.verifyLimeCode(code: code, phoneInput: limePhoneNumberInputCurrent) { token, sessionCookie in
+                                    limeAccessToken = token
+                                    limeCookie = sessionCookie
+                                    limeisDone = true
+                                    impactFeedback.impactOccurred()
+                                    print("Lime login finished, token: \(token), cookie: \(sessionCookie)")
+                                }
+                            }
+                        }
                     
                     
                     Text("If you don't have a Lime account, just swipe to the next page.")
