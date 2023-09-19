@@ -45,7 +45,7 @@ struct SettingsView: View {
                 
                 
                 Section {
-                    NavigationLink(destination: OnboardingView(name: $name, onboarding: $onboarding, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
+                    NavigationLink(destination: OnboardingView(name: $name, onboarding: $onboarding, alert: $alert, num_uber: $num_uber, num_lime: $num_lime, final: false)) {
                         Text("Link Accounts through Onboarding")
                     }
                 } header: {
