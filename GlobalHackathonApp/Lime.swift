@@ -13,14 +13,16 @@ struct Lime {
     var phoneNumberRegex: String = "^[0-9]{3}+-[0-9]{4}+-[0-9]{3}+"
     
     func sendLimeConfCode(phoneInput: String, onCompletion: @escaping (Bool) -> Void) {
+        //The phoneInput will be a standard phone number, no +1, from the onboarding view, but the api doesn't support dashes
         let formattedPhone = phoneInput.replacingOccurrences(of: "-", with: "")
         let url = URL(string: baseURL + "/v1/login?phone=%2B1" + formattedPhone)!
-        print("Sending \(url.absoluteString)")
+        print("[sendLimeConfCode] Sending \(url.absoluteString)")
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let httpResponse = response as? HTTPURLResponse {
-                print("statusCode: \(httpResponse.statusCode)")
+                print("[sendLimeConfCode] statusCode: \(httpResponse.statusCode)")
                 if (httpResponse.statusCode != 200) {
+                    print("[sendLimeConfCode] Response status code was not 200, headers:")
                     print(httpResponse.allHeaderFields)
                 }
                 onCompletion(httpResponse.statusCode == 200)
@@ -54,7 +56,7 @@ struct Lime {
             }
             do {
                 var token: String = ""
-                //Get the token from the JSON; The token should exist
+                //Get the token from the JSON; The token should exist, if not then there was an API error
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                     print(httpResponse.statusCode)
                     print(json)
@@ -79,6 +81,7 @@ struct Lime {
         var request = URLRequest(url: URL(string: baseURL + "/v1/views/ride_history?page_limit=1")!)
         request.setValue(cookie, forHTTPHeaderField: "Authorization")
         
+        //Set the web_session cookie, stored before
         if let cookie = HTTPCookie(properties: [
             .domain: request.url?.host()!,
             .path: "/",
