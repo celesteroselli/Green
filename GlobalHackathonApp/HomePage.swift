@@ -101,7 +101,7 @@ struct HomePage: View {
                         .foregroundColor(.white)
                         .cornerRadius(8)
                     }
-                    NavigationLink(destination: SettingsView(name: $name)) {
+                    NavigationLink(destination: SettingsView(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
                         HStack {
                             Image(systemName: "gear")
                             Text("Settings")
