@@ -1,7 +1,7 @@
 # GlobalHackathonApp
-Welcome to our submission to the Virtual/Uber Global Hackathon!
+**Welcome to our submission to the Virtual/Uber Global Hackathon!**
 
-Green, your eco-friendly ride rewarded.
+**Green, your eco-friendly ride rewarded.**
 
 Green is a revolutionary new way for cities to incentivize environmentally-friendly transportation.
 Green will reward users with Green Points. Green Points are a virtual currency within the app that can be used as discounts at participating sustainable small buisnesses throughout any city with Green.
@@ -11,6 +11,7 @@ Green will also reward people for taking rideshare with companies like Uber, and
 Green is the easiest way for cities to promote environmentally-friendy transportation and small buisnesses without lifting a finger.
 
 About Green's Development:
+
 Green is coded in Swift, with some framework helpers (using Cocoapods) coded in Ruby
 
 Using Green:
