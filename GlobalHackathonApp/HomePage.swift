@@ -14,13 +14,8 @@ struct HomePage: View {
     @Binding var name: String
     @Binding var alert: Bool
     @AppStorage("points") public var points: Int = 0
-    @AppStorage("lastUberRide") public var lastUberRide: Double = Date.now.timeIntervalSince1970
-    @AppStorage("limeToken") public var limeToken: String = ""
-    @AppStorage("limeCookie") public var limeCookie: String = ""
     @Binding var num_uber: Int
     @Binding var num_lime: Int
-    var uber: Uber = Uber()
-    var lime: Lime = Lime()
     
     //gets alert message based off of how many new uber/lime rides have been taken
     func get_message() -> String {
@@ -118,18 +113,6 @@ struct HomePage: View {
                 Alert(title: Text(get_message()), message: Text("You've been rewarded \(add_points()) points"), dismissButton: .cancel(Text("Got it!")) {
                     points += add_points()
                     print(add_points())
-                })
-            }
-            .onAppear {
-                //Start callbacks to check for recent rides
-                uber.getRecentRides(onFinish: {history, serverResponse in
-                    history?.history.forEach({ride in //Go through each last ride returned
-                        //If this ride ended before the last remembered ride ended, then give them a point
-                        if (ride.endTime?.timeIntervalSince1970 ?? 0.0 > lastUberRide) {
-                            num_uber += 1
-                            lastUberRide = ride.endTime!.timeIntervalSince1970 //Set the last ride time remembered to the most recent ride
-                        }
-                    })
                 })
             }
         }
