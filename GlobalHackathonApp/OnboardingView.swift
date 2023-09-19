@@ -31,6 +31,7 @@ struct OnboardingView: View {
     @AppStorage("limeCookie") var limeCookie: String = ""
     var welcomeToGreenText: String = ""
     func onUberLoginAttempt(success: Bool, message: String) {
+        //Callback for uber login function. Alerts the user if it was successful or not
         if success {
             self.uberLoginMessage = "Success"
             self.uberLoginMessageColor = Color.green
@@ -47,13 +48,9 @@ struct OnboardingView: View {
     
     
     var body: some View {
-        
         NavigationView {
-            
             TabView {
-                
                 HStack{
-                    
                     Text ("Swipe to start")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -89,11 +86,8 @@ struct OnboardingView: View {
                 Text("Green is the only app that rewards you for choosing eco-friendly alternative transportation!")
                     .font(.headline)
                     .padding(.all)
-                
-                
                 Text("Let's Get Started!")
                     .font(.largeTitle.bold())
-                
                 if name == "" {
                     Text("We'll need to link your accounts.")
                         .font(.largeTitle)
@@ -105,30 +99,21 @@ struct OnboardingView: View {
                         .fontWeight(.bold)
                         .padding(.all)
                 }
-                
-                
-                
                 VStack (spacing: 25){
                     if uberIsDone == false {
-                        
                         Text("Connect your Uber account to get points for using rideshare.")
                             .font(.largeTitle)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             .padding(.all)
                     } else if uberIsDone == true {
-                      
                             Text("Connect your Uber account to get points for using rideshare. \(Image(systemName: "checkmark"))")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .padding(.all)
-                        
-                    
-                        
-                            
                     }
                     Button("Link Uber to Green")
                     {
-                        
+                        //Call the uber login function with the above function as a callback
                         uber.doLogin(onCompletion: onUberLoginAttempt)
                     }
                     
@@ -139,8 +124,6 @@ struct OnboardingView: View {
                     Text("If you don't have an Uber account, just swipe to the next page.")
                         .padding(.all)
                 }
-                
-                
                 VStack(spacing: 25){
                     
                     if limeisDone == true {
@@ -165,16 +148,22 @@ struct OnboardingView: View {
                     .keyboardType(.numberPad)
                     .frame(width: nil)
                     .onChange(of: limePhoneNumberInputCurrent) { newText in
+                        //Automatically add dashes to the phone number input, and automatically send request when the phone number is completely inputed
                         if (limePhoneNumberInputCurrent.count == 3) {
                             limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
                         } else if (limePhoneNumberInputCurrent.count == 7) {
                             limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
                         }
                         if (limePhoneNumberInputCurrent.count == 12){
+                            //Send confirmation code request
                             lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) {
                                 success in if success {
                                     print("lime phone number submission success")
                                     limePhoneNumberColor = Color.green
+                                    //Colors the phone number text green if the confirmation request is submitted
+                                } else {
+                                    limePhoneNumberColor = Color.red
+                                    //Colors the phone number text red if the confirmation request returns an invalid status code
                                 }
                             }
                         }
@@ -187,7 +176,9 @@ struct OnboardingView: View {
                         .frame(width: nil)
                         .onChange(of: code) { newText in
                             if (code.count == 6) {
+                                //Auto submit the lime code when inputted
                                 lime.verifyLimeCode(code: code, phoneInput: limePhoneNumberInputCurrent) { token, sessionCookie in
+                                    //Store the token and cookie
                                     limeAccessToken = token
                                     limeCookie = sessionCookie
                                     limeisDone = true
@@ -196,14 +187,9 @@ struct OnboardingView: View {
                                 }
                             }
                         }
-                    
-                    
                     Text("If you don't have a Lime account, just swipe to the next page.")
-                    
                         .padding(.all)
                 }
-                
-                
                 if final {
                     VStack {
                         Text("Thanks!")
@@ -221,28 +207,16 @@ struct OnboardingView: View {
                                 
                                 Text("Let's do this!")
                                     .font(.system(size: 25))
-                                
-                                
-                                
-                                
-                                
                             }
                             
                         }
                         
                     } .buttonStyle(.bordered)
-                    
-                    
                 }
-                
             }
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .tabViewStyle(.page(indexDisplayMode: .never))
-            
-            
         }
-        
-        
         .confettiCannon(counter: $counter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
     }
     
