@@ -43,6 +43,7 @@ struct OnboardingView: View {
             uberIsDone = false
         }
     }
+    @State var final:Bool = true
     
     
     var body: some View {
@@ -203,36 +204,36 @@ struct OnboardingView: View {
                 }
                 
                 
-                
-                VStack {
-                    Text("Thanks!")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
-                        Button(action: {
-                            counter += 1
-                            print(name)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                                onboarding = false
+                if final {
+                    VStack {
+                        Text("Thanks!")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
+                            Button(action: {
+                                counter += 1
+                                print(name)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                                    onboarding = false
+                                }
+                                
+                            }) {
+                                
+                                Text("Let's do this!")
+                                    .font(.system(size: 25))
+                                
+                                
+                                
+                                
+                                
                             }
-                            
-                        }) {
-                            
-                            Text("Let's do this!")
-                                .font(.system(size: 25))
-                            
-                            
-                            
-                            
                             
                         }
                         
-                    }
+                    } .buttonStyle(.bordered)
                     
-                } .buttonStyle(.bordered)
-                
-                
-                
+                    
+                }
                 
             }
             .textFieldStyle(RoundedBorderTextFieldStyle())

@@ -14,6 +14,10 @@ struct SettingsView: View {
     @State var uberLoginMessage: String = ""
     @State var uberLoginMessageColor: Color = Color.gray
     @State var limePhoneNumberInputCurrent: String = ""
+    @Binding var alert: Bool
+    @Binding var num_uber: Int
+    @Binding var num_lime: Int
+    @State var onboarding: Bool = false
     
     func onUberLoginAttempt(success: Bool, message: String) {
         if success {
@@ -41,35 +45,8 @@ struct SettingsView: View {
                 
                 
                 Section {
-                    TextField (
-                        "What's your Lime phone number?",
-                        text: $limePhoneNumberInputCurrent
-                    )
-                    
-                    .keyboardType(.numberPad)
-                    .frame(width: nil)
-                    .onChange(of: limePhoneNumberInputCurrent) { newText in
-                        if (limePhoneNumberInputCurrent.count == 3) {
-                            limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
-                        } else if (limePhoneNumberInputCurrent.count == 7) {
-                            limePhoneNumberInputCurrent = limePhoneNumberInputCurrent + "-"
-                        }
-                        if (limePhoneNumberInputCurrent.count == 10){
-                            lime.sendLimeConfCode(phoneInput: limePhoneNumberInputCurrent) {
-                                success in if success {
-                                    print("success")
-                                }
-                            }
-                            
-                            
-                        }
-                        
-                        
-                    }
-                    Button("Link Uber to Green \(Image(systemName: "link.badge.plus"))") {
-                        
-                        uber.doLogin(onCompletion: onUberLoginAttempt)
-                        
+                    NavigationLink(destination: OnboardingView(name: $name, onboarding: $onboarding, alert: $alert, num_uber: $num_uber, num_lime: $num_lime, final: false)) {
+                        Text("Link Accounts through Onboarding")
                     }
                 } header: {
                     Text("Link Accounts")
