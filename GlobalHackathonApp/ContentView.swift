@@ -13,8 +13,8 @@ struct ContentView: View {
     @AppStorage("onboarding") var onboarding: Bool = true
     @AppStorage("name") var name: String = ""
     @AppStorage("alert") var alert: Bool = false
-    var num_uber: Int = 0
-    var num_lime: Int = 0
+    @AppStorage("num_uber") var num_uber: Int = 0
+    @AppStorage("num_lime") var num_lime: Int = 0
     @AppStorage("lastUberRide") var lastUberRide: Double = 0.0
     @AppStorage("lastLimeRide") var lastLimeRide: Double = 0.0
     @AppStorage("limeToken") var limeAccessToken: String = ""
@@ -22,7 +22,7 @@ struct ContentView: View {
     var uber: Uber = Uber()
     var lime: Lime = Lime()
     
-    mutating func should_alert() -> Binding<Bool> {
+    func should_alert() -> Binding<Bool> {
         //check if user logged in to uber
         //if so, check if new ride
         //if so, for each new ride, add 1 to num_uber, and make alert = true
@@ -58,7 +58,7 @@ struct ContentView: View {
         } else {
             //if user's uber rides have increased, alert = true
             //else, alerts = false
-            HomePage(name: $name, alert: should_alert(), num_uber: num_uber, num_lime: num_lime)
+            HomePage(name: $name, alert: should_alert(), num_uber: $num_uber, num_lime: $num_lime)
         }
         
     }
