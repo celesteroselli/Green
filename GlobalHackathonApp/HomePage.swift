@@ -34,9 +34,6 @@ struct HomePage: View {
     
     //calculates points to add based off of how many new uber/lime rides have been taken
     func add_points() -> Int {
-        //resets num_lime and num_uber to 0
-        num_lime = 0
-        num_uber = 0
         return (5 * num_lime) + num_uber
     }
     
@@ -113,6 +110,9 @@ struct HomePage: View {
                 Alert(title: Text(get_message()), message: Text("You've been rewarded \(add_points()) points"), dismissButton: .cancel(Text("Got it!")) {
                     points += add_points()
                     print(add_points())
+                    //resets num_lime and num_uber to 0
+                    num_lime = 0
+                    num_uber = 0
                 })
             }
         }
