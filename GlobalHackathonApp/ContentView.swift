@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    //define persistant variables
     @AppStorage("onboarding") var onboarding: Bool = true
     @AppStorage("name") var name: String = ""
     @AppStorage("alert") var alert: Bool = false
@@ -53,6 +53,7 @@ struct ContentView: View {
     var body: some View {
         //checks onboarding variable to see if it should show onboarding view (for first time) or home page view
         //passes stored variables
+        //passes "true" for final, because it should show the final page since this is the first time you're using the app
         if onboarding {
             OnboardingView(name: $name, onboarding: $onboarding, alert: $alert, num_uber: $num_uber, num_lime: $num_lime, final: true)
         } else {

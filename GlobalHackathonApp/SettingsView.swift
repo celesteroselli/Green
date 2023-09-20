@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    //defines variables
     @Binding var name: String
     var uber: Uber = Uber()
     var lime: Lime = Lime()
@@ -19,18 +20,11 @@ struct SettingsView: View {
     @Binding var num_lime: Int
     @State var onboarding: Bool = false
     
-    func onUberLoginAttempt(success: Bool, message: String) {
-        if success {
-            self.uberLoginMessage = "Success"
-            self.uberLoginMessageColor = Color.green
-        } else {
-            self.uberLoginMessage = "Error: " + message
-            self.uberLoginMessageColor = Color.red
-        }
-    }
     var body: some View {
         NavigationView {
+            //sets up form
             Form {
+                //section to change username
                 Section {
                     TextField(name, text: $name)
                 } header: {
@@ -38,13 +32,9 @@ struct SettingsView: View {
                     
                 }
                 
-                
-                
-                
-                
-                
-                
+                //section that redirects to onboarding to re-link accounts
                 Section {
+                    //passes "false" for final variable, bc it should not show the final page, because you have back buttons to get back home
                     NavigationLink(destination: OnboardingView(name: $name, onboarding: $onboarding, alert: $alert, num_uber: $num_uber, num_lime: $num_lime, final: false)) {
                         Text("Link Accounts through Onboarding")
                     }
@@ -58,7 +48,6 @@ struct SettingsView: View {
                 }
                 
                 
-                
             }
             .navigationTitle("Settings")
         }
@@ -69,12 +58,3 @@ struct SettingsView: View {
     
     
 }
-
-
-//struct SettingsView_Previews: PreviewProvider {
-//   static var previews: some View {
-//      SettingsView()
-//  }
-//}
-
-

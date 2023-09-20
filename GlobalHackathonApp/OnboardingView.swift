@@ -9,6 +9,7 @@ import SwiftUI
 import ConfettiSwiftUI
 import NavigationTransitions
 struct OnboardingView: View {
+    //define variables
     let impactFeedback = UIImpactFeedbackGenerator(style: .rigid)
     @State private var uberIsDone: Bool = false
     @State private var limeisDone: Bool = false
@@ -30,6 +31,8 @@ struct OnboardingView: View {
     @AppStorage("limeToken") var limeAccessToken: String = ""
     @AppStorage("limeCookie") var limeCookie: String = ""
     var welcomeToGreenText: String = ""
+    @State var final:Bool = true
+    
     func onUberLoginAttempt(success: Bool, message: String) {
         //Callback for uber login function. Alerts the user if it was successful or not
         if success {
@@ -44,12 +47,13 @@ struct OnboardingView: View {
             uberIsDone = false
         }
     }
-    @State var final:Bool = true
     
     
     var body: some View {
+        //TabView with different pages that the user will swipe through during onboarding
         NavigationView {
             TabView {
+                //first tab
                 HStack{
                     Text ("Swipe to start")
                         .font(.largeTitle)
@@ -65,7 +69,7 @@ struct OnboardingView: View {
                         .fontWeight(.bold)
                         
                 }
-                
+                //second tab
                 VStack (spacing: 50) {
                     Text ("What should we call you?")
                         .font(.largeTitle)
@@ -77,7 +81,7 @@ struct OnboardingView: View {
                         .padding(30)
                 }
                 
-                
+                //third tab
                 if name == "" {
                     Text("Welcome to Green!")
                         .font(.title2.bold())
@@ -88,14 +92,17 @@ struct OnboardingView: View {
                         .padding(30)
                 }
                 
+                //fourth tab
                 Text("Green is the only app that rewards you for choosing eco-friendly alternative transportation!")
                     .font(.headline)
                     .padding(30)
                 
-                
+                //fifth tab
                 Text("Let's Get Started!")
                     .font(.largeTitle.bold())
                     .padding(30)
+                
+                //sixth tab
                 if name == "" {
                     Text("We'll need to link your accounts.")
                         .font(.largeTitle)
@@ -107,7 +114,10 @@ struct OnboardingView: View {
                         .fontWeight(.bold)
                         .padding(30)
                 }
+                
+                //seventh tab
                 VStack (spacing: 25){
+                    //adds checkmark if Uber integration is complete
                     if uberIsDone == false {
                         Text("Connect your Uber account to get points for using rideshare.")
                             .font(.largeTitle)
@@ -118,10 +128,7 @@ struct OnboardingView: View {
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .padding(30)
-                        
-                    
-                        
-                            
+                     
                     }
                     Button("Link Uber to Green")
                     {
@@ -137,9 +144,11 @@ struct OnboardingView: View {
                     
                     Text("If you don't have an Uber account, just swipe to the next page.")
                         .padding(30)
+                    
+                //eigth tab
                 }
                 VStack(spacing: 25){
-                    
+                    //adds checkmark if lime integration is complete
                     if limeisDone == true {
                         
                         Text("Connect your Lime account to get points for taking electric bikes and scooters. \(Image(systemName: "checkmark"))")
@@ -207,45 +216,37 @@ struct OnboardingView: View {
                         .padding(30)
                 }
                 
-                
-                
-                VStack {
-                    Text("Thanks!")
-                        .padding(30)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
-                        Button(action: {
-                            counter += 1
-                            print(name)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                                onboarding = false
+                //ninth (final) tab
+                if final {
+                    //if accessing through settings to change account info, then no need to show this page, because you have a back button from NavigationView to redirect home
+                    VStack {
+                        Text("Thanks!")
+                            .padding(30)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        NavigationLink(destination: HomePage(name: $name, alert: $alert, num_uber: $num_uber, num_lime: $num_lime)) {
+                            Button(action: {
+                                counter += 1
+                                print(name)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                                    onboarding = false
+                                }
+                                
+                            }) {
+                                
+                                Text("Let's do this!")
+                                    .font(.system(size: 25))
+                                    .padding(30)
                             }
-                            
-                        }) {
-                            
-                            Text("Let's do this!")
-                                .font(.system(size: 25))
-                                .padding(30)
-                            
-                            
-                            
-                            
                             
                         }
                         
-                    }
-                    
-                } .buttonStyle(.bordered)
-                    
-                
-                
-                
-                
+                    } .buttonStyle(.bordered)
+                }
             }
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .tabViewStyle(.page(indexDisplayMode: .never))
-        }
+        } //displays confetti cannon effect when you press the final button!
         .confettiCannon(counter: $counter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
     }
     
