@@ -82,6 +82,8 @@ struct OnboardingView: View {
                 }
                 
                 //third tab
+                
+                //support for null value for name
                 if name == "" {
                     Text("Welcome to Green!")
                         .font(.title2.bold())
@@ -103,6 +105,8 @@ struct OnboardingView: View {
                     .padding(30)
                 
                 //sixth tab
+                
+                //support for null value for name
                 if name == "" {
                     Text("We'll need to link your accounts.")
                         .font(.largeTitle)
