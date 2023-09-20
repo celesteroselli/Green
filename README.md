@@ -19,3 +19,6 @@ Using Green:
 To start using Green, simply log in with your Uber login credentials and/or Lime account phone number. The dashboard shows how many points you currently have, with links to the QR Scanner, Green Site Map, Achievements Page, and Settings Page. 
 
 Currently, due to Uber API restraints, Uber rides may not appear immediately show up as points in your Green account, but you can still scan the QR codes to earn points! The Map Page shows a location in NYC with example sustainable businesses, but in future versions, with more cities implemented by Uber, this would show the user's location and local businesses.
+
+Resources used:
+We used ChatGPT to inspire taglines, and Adobe Firefly for help with AI art generation for our logo
